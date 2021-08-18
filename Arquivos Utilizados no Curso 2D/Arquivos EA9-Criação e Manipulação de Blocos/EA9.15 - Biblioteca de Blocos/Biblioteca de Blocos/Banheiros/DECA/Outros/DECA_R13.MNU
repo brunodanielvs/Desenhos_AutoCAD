@@ -1,0 +1,6444 @@
+//      ACAD.MNU Version 13.0 for Release 13 DOS/386
+//
+//
+//
+//      Sub-menu criado para a Deca Versao 2.0
+//      Copyright (C) 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1994 
+//      by Autodesk, Inc.
+//
+//      Permission to use, copy, modify, and distribute this software 
+//      for any purpose and without fee is hereby granted, provided
+//      that the above copyright notice appears in all copies and 
+//      that both that copyright notice and the limited warranty and 
+//      restricted rights notice below appear in all supporting 
+//      documentation.
+//
+//      AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS.  
+//      AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF 
+//      MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC. 
+//      DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE 
+//      UNINTERRUPTED OR ERROR FREE.
+//
+//      Use, duplication, or disclosure by the U.S. Government is subject to 
+//      restrictions set forth in FAR 52.227-19 (Commercial Computer 
+//      Software - Restricted Rights) and DFAR 252.227-7013(c)(1)(ii) 
+//      (Rights in Technical Data and Computer Software), as applicable. 
+//
+//      Input to menu compiler mc(.exe) for acad.mnu.  See mc.doc.
+//
+//  Notes:
+//
+//  AutoCAD looks for an ".mnl" (Menu Lisp) file whose name is
+//  the same as that of the menu file, and loads it if
+//  found.  If you modify this menu and change its name, you
+//  should copy acad.mnl to <yourname>.mnl, since the menu
+//  relies on AutoLISP routines found there.
+//
+//  The SNAP_TO menu can be called on high
+//  resolution displays to paint the snap
+//  options on the bottom of the screen menu
+//
+//  IMPORTANT: The DIM menu page is a duplicate of
+//  the DRAWDIM page.  Changes to one page must be
+//  made to both in order to maintain consistency.
+//
+//  -----------------------------------------------------------------
+
+
+//      Macro definition(s) to be expanded by mc(.exe):
+
+
+//
+//      Begin AutoCAD Button Menus
+//
+
+***BUTTONS1
+;
+$p0=pop0 $p0=*
+^C^C
+^B
+^O
+^G
+^D
+^E
+^T
+
+***BUTTONS2
+$p0=pop0 $p0=*
+
+***AUX1
+;
+$p0=*
+^C^C
+^B
+^O
+^G
+^D
+^E
+^T
+
+***AUX2
+$p0=*
+
+***POP0
+[Osnap]
+[From]_from
+[--]
+[Endpoint]_endp
+[Midpoint]_mid
+[Intersection]_int
+[Apparent Intersection]_appint
+[Center]_center
+[Quadrant]_qua
+[Perpendicular]_per
+[Tangent]_tan
+[Node]_nod
+[Insertion]_ins
+[Nearest]_nea
+[Quick,]_qui^Z
+[--]
+[None]_non
+[--]
+[.X].X
+[.Y].Y
+[.Z].Z
+[.XZ].XZ
+[.YZ].YZ
+[.XY].XY
+
+***POP1
+[File]
+[New...]^C^C_new
+[Open...]^C^C_open
+[Save]^C^C_qsave
+[Save As...]^C^C_saveas
+[--]
+[Print...]^C^C_plot
+[--]
+[->External Reference]
+  [Attach...]^C^C_xref _a
+  [Overlay...]^C^C_xref _o
+  [--]
+  [Reload]^C^C_xref _r
+  [Detach]^C^C_xref _d
+  [Clip]^C^C_xrefclip
+  [--]
+  [Path]^C^C_xref _p
+  [<-List]^C^C_xref _?
+[->Bind]
+  [All]^C^C_xref _b *
+  [--]
+  [Block]^C^C_xbind _b
+  [Layer]^C^C_xbind _la
+  [Linetype]^C^C_xbind _lt
+  [Text Style]^C^C_xbind _s
+  [<-Dimension Style]^C^C_xbind _d
+[--]
+[->Import]
+  [DXF...]^C^C_dxfin
+  [DXB...]^C^C_dxbin
+  [--]
+  [3D Studio...]^C^C_3dsin
+  [SAT...]^C^C_acisin
+  [--]
+  [->PostScript]
+    [Import...]^C^C_psin
+    [--]
+    [Display]^C^C_psdrag
+    [<-Quality]^C^C_psquality
+  [->Raster]
+    [PCX...]^C^C_pcxin
+    [GIF...]^C^C_gifin
+    [<-<-TIFF...]^C^C_tiffin
+[->Export]
+  [Block...]^C^C_wblock
+  [Release 12 DWG...]^C^C_saveasr12
+  [DXF...]^C^C_dxfout
+  [--]
+  [3D Studio...]^C^C_3dsout
+  [SAT...]^C^C_acisout
+  [Stereolithography]^C^C_stlout
+  [--]
+  [->PostScript]
+    [Export...]^C^C_psout
+    [<-Prolog]^C^C_psprolog
+  [--]
+  [<-Attributes...]^C^C_ddattext
+[--]
+[->Management]
+  [Utilities...]^C^C_files
+  [Audit]^C^C_audit
+  [<-Recover...]^C^C_recover
+[--]
+[Exit]^C^C_quit
+
+***POP2
+[Assist]
+[Undo]^C^C_u
+[Redo]^C^C_redo
+[--]
+[->Object Snap]
+  [From]$M=$(if,$(getvar,cmdactive),,_osnap;)_from
+  [--]
+  [Endpoint]$M=$(if,$(getvar,cmdactive),,_osnap;)_endp
+  [Midpoint]$M=$(if,$(getvar,cmdactive),,_osnap;)_mid
+  [Intersection]$M=$(if,$(getvar,cmdactive),,_osnap;)_int
+  [Apparent Intersection]$M=$(if,$(getvar,cmdactive),,_osnap;)_appint
+  [Center]$M=$(if,$(getvar,cmdactive),,_osnap;)_cen
+  [Quadrant]$M=$(if,$(getvar,cmdactive),,_osnap;)_qua
+  [Perpendicular]$M=$(if,$(getvar,cmdactive),,_osnap;)_per
+  [Tangent]$M=$(if,$(getvar,cmdactive),,_osnap;)_tan
+  [Node]$M=$(if,$(getvar,cmdactive),,_osnap;)_node
+  [Insertion]$M=$(if,$(getvar,cmdactive),,_osnap;)_ins
+  [Nearest]$M=$(if,$(getvar,cmdactive),,_osnap;)_nea
+  [Quick,]$M=$(if,$(getvar,cmdactive),,_osnap;)_qui,^z
+  [--]
+  [<-None]$M=$(if,$(getvar,cmdactive),,_osnap;)_non
+[->Point Filters]
+  [.X].x
+  [.Y].y
+  [.Z].z
+  [--]
+  [.XY].xy
+  [.XZ].xz
+  [<-.YZ].yz
+[--]
+[$(if,$(getvar,snapmode),!.)Snap]^b
+[$(if,$(getvar,gridmode),!.)Grid]^g
+[$(if,$(getvar,orthomode),!.)Ortho]^o
+[--]
+[->Select Objects]
+  [Window]$M=$(if,$(getvar,cmdactive),,_select;)_w
+  [Crossing]$M=$(if,$(getvar,cmdactive),,_select;)_c
+  [Group]$M=$(if,$(getvar,cmdactive),,_select;)_g
+  [Previous]$M=$(if,$(getvar,cmdactive),,_select;)_p
+  [Last]$M=$(if,$(getvar,cmdactive),,_select;)_l
+  [All]$M=$(if,$(getvar,cmdactive),,_select;)_ALL
+  [Window Polygon]$M=$(if,$(getvar,cmdactive),,_select;)_wp
+  [Crossing Polygon]$M=$(if,$(getvar,cmdactive),,_select;)_cp
+  [Fence]$M=$(if,$(getvar,cmdactive),,_select;)_f
+  [--]
+  [Add]$M=$(if,$(getvar,cmdactive),,_select;)_a
+  [<-Remove]$M=$(if,$(getvar,cmdactive),,_select;)_r
+[Selection Filters...]'_filter
+[Group Objects...]^C^C_group
+[$(if,$(or,$(eq,$(getvar,pickstyle),1),$(eq,$(getvar,pickstyle),3)),!.)Group Selection]$M=$(if,+
+$(eq,$(getvar,pickstyle),0),'_setvar;pickstyle;1,+
+$(if,$(eq,$(getvar,pickstyle),1),'_setvar;pickstyle;0,+
+$(if,$(eq,$(getvar,pickstyle),2),'_setvar;pickstyle;3,'_setvar;pickstyle;2)))
+[--]
+[->Inquiry]
+  [List]^C^C_list
+  [--]
+  [Locate Point]'_id
+  [Distance]'_dist
+  [Area]^C^C_area
+  [<-Mass Properties]^C^C_massprop
+[--]
+[Cancel]^C^C^C
+
+***POP3
+[View]
+[Redraw View]'_redraw
+[Redraw All]'_redrawall
+[--]
+[->Zoom]
+  [In]'_zoom 2x
+  [Out]'_zoom .5x
+  [--]
+  [Window]'_zoom _w
+  [All]^C^C_zoom _a
+  [Previous]'_zoom _p
+  [Scale]'_zoom
+  [Dynamic]'_zoom _d
+  [Center]'_zoom _c
+  [Left]'_zoom _l
+  [Limits]'_zoom ^P(getvar "limmin") (getvar "limmax") ^P
+  [Extents]^C^C_zoom _e
+  [<-Vmax]'_zoom _v
+[->Pan]
+  [Point]'_pan
+  [--]
+  [Left]'_pan ^P(trans (list (* 0.5 (getvar "viewsize")) 0) 0 1) ;^P
+  [Right]'_pan ^P(trans (list (* -0.5 (getvar "viewsize")) 0) 0 1) ;^P
+  [Up]'_pan ^P(trans (list 0 (* -0.5 (getvar "viewsize"))) 0 1) ;^P
+  [Down]'_pan ^P(trans (list 0 (* 0.5 (getvar "viewsize"))) 0 1) ;^P
+  [--]
+  [Up/Left]'_pan ^P(trans (list (* 0.5 (getvar "viewsize")) (* -0.6 (getvar "viewsize"))) 0 1) ;^P
+  [Up/Right]'_pan ^P(trans (list (* -0.5 (getvar "viewsize")) (* -0.6 (getvar "viewsize"))) 0 1) ;^P
+  [Down/Left]'_pan ^P(trans (list (* 0.5 (getvar "viewsize")) (* 0.6 (getvar "viewsize"))) 0 1) ;^P
+  [<-Down/Right]'_pan ^P(trans (list (* -0.5 (getvar "viewsize")) (* 0.6 (getvar "viewsize"))) 0 1) ;^P
+[--]
+[Named Views...]^C^C_ddview
+[->$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)3D Viewpoint Presets]
+  [->Plan View]
+    [Current]^C^C_plan;;
+    [World]^C^C_plan _w
+    [<-Named]^C^C_plan _u
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)Top  ]^C^C_vpoint _non *0,0,1
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)Bottom]^C^C_vpoint _non *0,0,-1
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)Left ]^C^C_vpoint _non *-1,0,0
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)Right]^C^C_vpoint _non *1,0,0
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)Front]^C^C_vpoint _non *0,-1,0
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)Back ]^C^C_vpoint _non *0,1,0
+  [--]
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)SW Isometric]^C^C_vpoint _non *-1,-1,1
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)SE Isometric]^C^C_vpoint _non *1,-1,1
+  [$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)NE Isometric]^C^C_vpoint _non *1,1,1
+  [<-$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)NW Isometric]^C^C_vpoint _non *-1,1,1
+[->$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)3D Viewpoint]
+  [Rotate...]^C^C_ddvpoint
+  [Tripod]^C^C_vpoint;;
+  [<-Vector]^C^C_vpoint
+[$(if,$(and,$(eq,$(getvar,tilemode),0),$(eq,$(getvar,cvport),1)),~,)3D Dynamic View]^C^C_dview
+[--]
+[$(if,$(getvar,tilemode),!.)Tiled Model Space]'_tilemode 1
+[$(if,$(and,$(eq,$(getvar,tilemode),0),$(!=,$(getvar,cvport),1)),!.)Floating Model Space]^C^C^P(ai_fms) ^P
+[$(if,$(and,$(eq,$(getvar,tilemode),0),$(=,$(getvar,cvport),1)),!.)Paper Space]^C^C_tilemode 0 _pspace
+[--]
+[->$(if,$(getvar,tilemode),,~)Tiled Viewports]
+  [Layout...]^P(ai_tiledvp_chk nil) ^P
+  [--]
+  [1 Viewport]^C^C_vports _si
+  [2 Viewports]^C^C_vports 2
+  [3 Viewports]^C^C_vports 3
+  [4 Viewports]^C^C_vports 4
+  [--]
+  [Restore]^C^C_vports _r
+  [Delete]^C^C_vports _d
+  [Join]^C^C_vports _j
+  [--]
+  [<-Save]^C^C_vports _s
+[->$(if,$(getvar,tilemode),~)Floating Viewports]
+  [1 Viewport]^C^C_mview
+  [2 Viewports]^C^C_mview _2
+  [3 Viewports]^C^C_mview _3
+  [4 Viewports]^C^C_mview _4
+  [--]
+  [Restore]^C^C_mview _r
+  [--]
+  [Viewports On]^C^C_mview _ON
+  [Viewports Off]^C^C_mview _OFF
+  [Hideplot]^C^C_mview _h
+  [--]
+  [<-MV Setup]^C^C_mvsetup
+[--]
+[Preset UCS...]^C^C_dducsp
+[Named UCS...]^C^C_dducs
+[->Set UCS]
+  [World]^C^C_ucs _w
+  [Origin]^C^C_ucs _o
+  [Z Axis Vector]^C^C_ucs _zaxis
+  [3 Point]^C^C_ucs _3
+  [Object]^C^C_ucs _ob
+  [View]^C^C_ucs _v
+  [X Axis Rotate]^C^C_ucs _x
+  [Y Axis Rotate]^C^C_ucs _y
+  [Z Axis Rotate]^C^C_ucs _z
+  [Previous]^C^C_ucs _p
+  [--]
+  [Restore]^C^C_ucs _r
+  [Save]^C^C_ucs _s
+  [Delete]^C^C_ucs _d
+  [--]
+  [<-List]^C^C_ucs _?
+
+***POP4
+[Draw]
+[Line]^C^C_line
+[Construction Line]^C^C_xline
+[Ray]^C^C_ray
+[Sketch]^C^C_sketch
+[--]
+[Polyline]^C^C_pline
+[3D Polyline]^C^C_3dpoly
+[Multiline]^C^C_mline
+[--]
+[Spline]^C^C_spline
+[->Arc]
+  [3 Points]^C^C_arc
+  [Start, Center, End]^C^C_arc \_c
+  [Start, Center, Angle]^C^C_arc \_c \_a
+  [Start, Center, Length]^C^C_arc \_c \_l
+  [Start, End, Angle]^C^C_arc \_e \_a
+  [Start, End, Direction]^C^C_arc \_e \_d
+  [Start, End, Radius]^C^C_arc \_e \_r
+  [Center, Start, End]^C^C_arc _c
+  [Center, Start, Angle]^C^C_arc _c \\_a
+  [Center, Start, Length]^C^C_arc _c \\_l
+  [<-Continue]^C^C_arc ;
+[->Circle]
+  [Center, Radius]^C^C_circle
+  [Center, Diameter]^C^C_circle \_d
+  [--]
+  [2 Points]^C^C_circle _2p
+  [3 Points]^C^C_circle _3p
+  [--]
+  [Tan, Tan, Radius]^C^C_circle _ttr
+  [Tan, Tan, Tan]^C^C_circle _3p _tan \_tan \_tan \
+  [--]
+  [<-Donut]^C^C_donut
+[->Ellipse]
+  [Center]^C^C_ellipse _c
+  [Axis, End]^C^C_ellipse
+  [--]
+  [<-Arc]^C^C_ellipse _a
+[--]
+[->Polygon]
+  [Rectangle]^C^C_rectang
+  [Polygon]^C^C_polygon
+  [<-2D Solid]^C^C_solid
+[--]
+[->Point]
+  [Point]*^C^C_point
+  [Divide]^C^C_divide
+  [<-Measure]^C^C_measure
+[->Insert]
+  [Block...]^C^C_ddinsert
+  [Multiple Blocks]^C^C_minsert
+  [--]
+  [<-Shape]^C^C_shape
+[--]
+[->Surfaces]
+  [3D Objects...]$I=image_3dobjects $i=*
+  [3D Face]^C^C_3dface
+  [--]
+  [Edge]^C^C_edge
+  [3D Mesh]^C^C_3dmesh
+  [--]
+  [Revolved Surface]^C^C_revsurf
+  [Extruded Surface]^C^C_tabsurf
+  [Ruled Surface]^C^C_rulesurf
+  [<-Edge Surface]^C^C_edgesurf
+[->Solids]
+  [->Box]
+    [Center]^C^C_box _ce
+    [<-Corner]^C^C_box
+  [Sphere]^C^C_sphere
+  [->Cylinder]
+    [Elliptical]^C^C_cylinder _e
+    [<-Center]^C^C_cylinder
+  [->Cone]
+    [Elliptical]^C^C_cone _e
+    [<-Center]^C^C_cone
+  [->Wedge]
+    [Center]^C^C_wedge _ce
+    [<-Corner]^C^C_wedge
+  [Torus]^C^C_torus
+  [--]
+  [Extrude]^C^C_extrude
+  [Revolve]^C^C_revolve
+  [--]
+  [Slice]^C^C_slice
+  [Section]^C^C_section
+  [Interference]^C^C_interfere
+  [--]
+  [<-AME Convert]^C^C_ameconvert
+[--]
+[->Hatch]
+  [Hatch...]^C^C_bhatch
+  [<-PostScript Fill]^C^C_psfill
+[--]
+[->Text]
+  [Text]^C^C_mtext
+  [Dynamic Text]^C^C_dtext
+  [<-Single-Line Text]^C^C_text
+[->Dimensioning]
+  [Linear]^C^C_dimlinear
+  [Aligned]^C^C_dimaligned
+  [->Radial]
+    [Radius]^C^C_dimradius
+    [<-Diameter]^C^C_dimdiameter
+  [Angular]^C^C_dimangular
+  [->Ordinate]
+    [Automatic]^C^C_dimordinate
+    [X-Datum]^C^C_dimordinate \_x
+    [<-Y-Datum]^C^C_dimordinate \_y
+  [Baseline]^C^C_dimbaseline
+  [Continue]^C^C_dimcontinue
+  [--]
+  [Center Mark]^C^C_dimcenter
+  [Leader]^C^C_leader
+  [Tolerance...]^C^C_tolerance
+  [--]
+  [Oblique]^C^C_dimedit _o
+  [->Align Text]
+    [Home]^C^C_dimtedit \_h
+    [Rotate]^C^C_dimtedit \_a
+    [--]
+    [Left]^C^C_dimtedit \_l
+    [Center]^C^C^P_SELECT \(ai_dim_cen);^P
+    [<-<-Right]^C^C_dimtedit \_r
+
+***POP5
+[Construct]
+[Copy]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),GRIP),_copy,^C^C_copy)
+[Offset]^C^C_offset
+[Mirror]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),GRIP),_mirror,^C^C_mirror)
+[->Array]
+  [Rectangular]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),^C^C_array;_r,^C^C_select;\_array;_p;;_r)
+  [<-Polar]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),^C^C_array;_p,^C^C_select;\_array;_p;;_p)
+[--]
+[Chamfer]^C^C_chamfer
+[Fillet]^C^C_fillet
+[--]
+[Region]^C^C_region
+[Boundary]^C^C_boundary
+[--]
+[Union]^C^C_union
+[Subtract]^C^C_subtract
+[Intersection]^C^C_intersect
+[--]
+[Block]^C^C_block
+[Attribute...]^C^C_ddattdef
+[--]
+[->3D Array]
+  [Rectangular]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),^C^C_3darray;_r,^C^C_select;\_3darray;_p;;_r)
+  [<-Polar]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),^C^C_3darray;_p,^C^C_select;\_3darray;_p;;_p)
+[3D Mirror]^C^C_mirror3d
+[3D Rotate]^C^C_rotate3d
+
+***POP6
+[Modify]
+[Properties...](ai_propchk)
+[--]
+[Move]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),GRIP),_move,^C^C_move)
+[Rotate]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),GRIP),_rotate,^C^C_rotate)
+[Align]^C^C_align
+[--]
+[Stretch]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),GRIP),_stretch,^C^C_stretch)
+[Scale]$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),GRIP),_scale,^C^C_scale)
+[Lengthen]^C^C_lengthen
+[Point]^C^C_change
+[--]
+[Trim]^C^C_trim
+[Extend]^C^C_extend
+[->Break]
+  [1 Point]^C^C_break \@
+  [1 Point Select]^C^C_break \_f \@
+  [--]
+  [2 Points]^C^C_break
+  [<-2 Points Select]^C^C_break \_f
+[--]
+[Edit Polyline]^C^C_pedit
+[Edit Multiline...]^C^C_mledit
+[Edit Spline]^C^C_splinedit
+[Edit Text...]^C^C_ddedit
+[Edit Hatch...]^C^C_hatchedit
+[->Attribute]
+  [Edit...]^C^C_ddatte
+  [Edit Globally]^C^C_attedit
+  [--]
+  [<-Redefine]^C^Cattredef
+[Explode]^C^C_explode
+[--]
+[Erase]^C^C_erase
+[Oops!]^C^C_oops
+
+***POP7
+[Data]
+[Object Creation...]'_ddemodes
+[--]
+[Layers...]'_ddlmodes
+[->$(if,$(getvar,tilemode),~)Viewport Layer Controls]
+  [Freeze]^C^C_vplayer _f
+  [Thaw]^C^C_vplayer _t
+  [--]
+  [Reset]^C^C_vplayer _r
+  [New Freeze]^C^C_vplayer _n
+  [Default Visibility]^C^C_vplayer _v
+  [--]
+  [<-List]^C^C_vplayer _? \;
+[--]
+[Color]'_ddcolor
+[Linetype...]^C^C_ddltype
+[Multiline Style...]^C^C_mlstyle
+[Text Style]'_style
+[Dimension Style...]^C^C_ddim
+[Shape File...]^C^C_load
+[--]
+[Units...]'_ddunits
+[Drawing Limits]'_limits
+[Time]^C^C_time
+[Status]^C^C_status
+[--]
+[Rename...]^C^C_ddrename
+[->Purge]
+  [Layers]^C^C_purge _la
+  [Linetypes]^C^C_purge _lt
+  [Multiline Styles]^C^C_purge _m
+  [Text Styles]^C^C_purge _st
+  [Dimension Styles]^C^C_purge _d
+  [Shapes]^C^C_purge _sh
+  [Blocks]^C^C_purge _b
+  [--]
+  [<-All]^C^C_purge _a
+
+***POP8
+[Options]
+[Drawing Aids...]'_ddrmodes
+[Running Object Snap...]^C^C_ddosnap
+[Coordinate Display]^D
+[--]
+[Selection...]^C^C_ddselect
+[Grips...]^C^C_ddgrips
+[--]
+[->UCS]
+  [$(if,$(or,$(eq,$(getvar,ucsicon),1),$(eq,$(getvar,ucsicon),3)),!.)Icon]$M=$(if,+
+$(or,$(eq,$(getvar,ucsicon),1),$(eq,$(getvar,ucsicon),3)),^C^C_ucsicon _off,^C^C_ucsicon _on)
+  [$(if,$(or,$(eq,$(getvar,ucsicon),2),$(eq,$(getvar,ucsicon),3)),!.)Icon Origin]$M=$(if,+
+$(or,$(eq,$(getvar,ucsicon),2),$(eq,$(getvar,ucsicon),3)),^C^C_ucsicon _No,+
+$(if,$(eq,$(getvar,ucsicon),1),^C^C_ucsicon _OR,^C^C_ucsicon _OR _ucsicon _on))
+  [--]
+  [<-$(if,$(getvar,ucsfollow),!.)Follow]^P(ai_onoff "UCSFOLLOW") ^P
+[->Display]
+  [$(if,$(getvar,fillmode),!.)Solid Fill]^P(ai_onoff "FILLMODE") ^P
+  [Spline Frame]^P(ai_onoff "SPLFRAME") ^P
+  [->Attribute Display]
+    [$(if,$(eq,$(getvar,attmode),1),!.)Normal]'_attdisp _n
+    [$(if,$(eq,$(getvar,attmode),2),!.)On]'_attdisp _on
+    [<-$(if,$(eq,$(getvar,attmode),0),!.)Off]'_attdisp _off
+  [--]
+  [Point Style...]^C^C_ddptype
+  [--]
+  [$(if,$(and,$(getvar,textfill),$(eq,$(getvar,qtextmode),0)),!.)Filled Text]^C^C_qtext _off _textfill 1
+  [$(if,$(and,$(eq,$(getvar,textfill),0),$(eq,$(getvar,qtextmode),0)),!.)Outline Text]^C^C_qtext _off _textfill 0
+  [$(if,$(eq,$(getvar,qtextmode),1),!.)Text Frame Only]^C^C_qtext _on
+  [--]
+  [<-Text Quality]^C^C_textqlty
+[->Linetypes]
+  [Global Linetype Scale]^C^C_ltscale
+  [$(if,$(getvar,psltscale),!.)Paper Space Linetype Scale]^P(ai_onoff "PSLTSCALE") ^P
+  [--]
+  [<-$(if,$(getvar,plinegen),!.)Linetype Generation]^P(ai_onoff "PLINEGEN") ^P
+[Preferences...]^C^C_preferences
+[--]
+[Configure]^C^C_config
+[Dialog Box Colors...]^C^C_dlgcolor
+[Render Configure...]^C^C_rconfig
+[->Tablet]
+  [$(if,$(getvar,tabmode),!.)On]^C^C_tablet _on
+  [$(if,$(eq,$(getvar,tabmode),0),!.)Off]^C^C_tablet _off
+  [Calibrate]^C^C_tablet _cal
+  [<-Configure]^C^C_tablet _cfg
+[->Log Files]
+  [Session Log]^C^C_logfileon
+  [$(if,$(getvar,auditctl),!.)Audit Log]^C^C_auditctl
+  [<-$(if,$(getvar,xrefctl),!.)Xref Log]^C^C_xrefctl
+[--]
+[Auto Save Time]'_savetime
+[->System Variables]
+  [List]'_setvar ? *
+  [<-Set]'_setvar
+
+***POP9
+[Tools]
+[Applications...]^C^C_appload
+[Run Script...]^C^C_script
+[--]
+[->External Commands]
+  [Edit File]^C^C_edit
+  [<-Shell]^C^C_shell
+[--]
+[Aerial View]'_av=p
+[--]
+[->External Database]
+  [Administration...]^C^C_aseadmin
+  [--]
+  [Rows...]^C^C_aserows
+  [Links...]^C^C_aselinks
+  [--]
+  [Select Objects]^C^C_aseselect
+  [Export Links...]^C^C_aseexport
+  [<-SQL Editor...]^C^C_asesqled
+[--]
+[Hide]^C^C_hide
+[->Shade]
+  [256 Color]^C^C^P(setq ai_se (getvar "SHADEDGE"));_shadedge;0;_shade;+
+(setvar "SHADEDGE" ai_se)(setq ai_se nil)(princ) ^P
+  [256 Color Edge Highlight]^C^C^P(setq ai_se (getvar "SHADEDGE"));_shadedge;1;_shade;+
+(setvar "SHADEDGE" ai_se)(setq ai_se nil)(princ) ^P
+  [16 Color Hidden Line]^C^C^P(setq ai_se (getvar "SHADEDGE"));_shadedge;2;_shade;+
+(setvar "SHADEDGE" ai_se)(setq ai_se nil)(princ) ^P
+  [16 Color Filled]^C^C^P(setq ai_se (getvar "SHADEDGE"));_shadedge;3;_shade;+
+(setvar "SHADEDGE" ai_se)(setq ai_se nil)(princ) ^P
+  [--]
+  [<-Diffuse]^C^C_shadedif
+[->Render]
+  [Render]^C^C_render
+  [--]
+  [Scenes...]^C^C_scene
+  [Lights...]^C^C_light
+  [Materials...]^C^C_rmat
+  [Materials Library...]^C^C_matlib
+  [--]
+  [Preferences...]^C^C_rpref
+  [<-Statistics...]^C^C_stats
+[--]
+[->Slide]
+  [View...]^C^C_vslide
+  [<-Save...]^C^C_mslide
+[->Image]
+  [View...]^C^C_replay
+  [<-Save...]^C^C_saveimg
+[--]
+[Spelling...]^C^C_spell
+[Calculator]'_cal
+[--]
+[Menus...]^C^C_menu
+[--]
+[Reinitialize...]^C^C_reinit
+[Compile...]^C^C_compile
+
+***POP10
+[DECA]
+[Acessorios]$I=icon_acess1 $I=* 
+[--]
+[Cubas]$I=icon_cuba1 $I=*
+[--]
+[->Loucas]
+  [Belle Epoque...]$I=icon_louca1 $I=* 
+  [Carrara...]$I=icon_louca2 $I=* 
+  [De Ville...]$I=icon_louca3 $I=* 
+  [Duomo...]$I=icon_louca4 $I=* 
+  [Monte Carlo...]$I=icon_louca5 $I=* 
+  [Ravena...]$I=icon_louca6 $I=*
+  [Ritz...]$I=icon_louca7 $I=*
+  [Village...]$I=icon_louca8 $I=*
+  [Vogue Plus...]$I=icon_louca9 $I=* 
+  [Windsor...]$I=icon_louca10 $I=* 
+[<-]
+[--]
+[Mictorios]$I=icon_mictorio1 $I=* 
+[--]
+[Tanques]$I=icon_tanque1 $I=* 
+
+//    [Help]
+//    [Help...]'_?
+//    [--]
+//    [Search for Help On...]^P(help "" "" "help_partialkey") ^P
+//    [How to Use Help]^P(help "" "" "help_helponhelp") ^P
+//    [What's New in Release 13...]^C^Cwhatsnew
+//    [--]
+//    [About AutoCAD...]'_about
+
+//
+//     Begin AutoCAD Image Menus
+//
+
+***image
+**image_poly
+[Set Spline Fit Variables]
+[acad(pm-quad,Quadric Fit Mesh)]'_surftype 5
+[acad(pm-cubic,Cubic Fit Mesh)]'_surftype 6
+[acad(pm-bezr,Bezier Fit Mesh)]'_surftype 8
+[acad(pl-quad,Quadric Fit Pline)]'_splinetype 5
+[acad(pl-cubic,Cubic Fit Pline)]'_splinetype 6
+
+**image_3DObjects
+[3D Objects]
+[acad(box3d,3D Box)]^C^Cai_box
+[acad(Pyramid,Pyramid)]^C^Cai_pyramid
+[acad(Wedge,Wedge)]^C^Cai_wedge
+[acad(Dome,Dome)]^C^Cai_dome
+[acad(Sphere,Sphere)]^C^Cai_sphere
+[acad(Cone,Cone)]^C^Cai_cone
+[acad(Torus,Torus)]^C^Cai_torus
+[acad(Dish,Dish)]^C^Cai_dish
+[acad(Mesh,Mesh)]^C^Cai_mesh
+
+**image_vporti
+[Tiled Viewport Layout]
+[acad(vport-1,Single)]^C^C(ai_tiledvp 1 nil)
+[acad(vport-3v,Three: Vertical)]^C^C(ai_tiledvp 3 "_V")
+[acad(vport-3h,Three: Horizontal)]^C^C(ai_tiledvp 3 "_H")
+[acad(vport-4,Four:  Equal)]^C^C(ai_tiledvp 4 nil)
+[acad(vport-2v,Two:   Vertical)]^C^C(ai_tiledvp 2 "_V")
+[acad(vport-3r,Three: Right)]^C^C(ai_tiledvp 3 "_R")
+[acad(vport-3l,Three: Left)]^C^C(ai_tiledvp 3 "_L")
+[acad(vport-4l,Four:  Left)]^C^C(ai_tiledvp 4 "_L")
+[acad(vport-2h,Two:   Horizontal)]^C^C(ai_tiledvp 2 "_H")
+[acad(vport-3a,Three: Above)]^C^C(ai_tiledvp 3 "_A")
+[acad(vport-3b,Three: Below)]^C^C(ai_tiledvp 3 "_B")
+[acad(vport-4r,Four:  Right)]^C^C(ai_tiledvp 4 "_R")
+
+// POP DECA
+**icon_louca1
+[Linha BELLE EPOQUE]
+[bibdeca(bel01,Lav. c/ coluna)]^C^C_insert bel01
+[bibdeca(bel02,Lavatorio - V.F.)]^C^C_insert bel02
+[bibdeca(bel03,Lavatorio - V.L.)]^C^C_insert bel03
+[bibdeca(bel04,Lav. semi-encaixe)]^C^C_insert bel04
+[bibdeca(bel05,Lavatorio - V.F.)]^C^C_insert bel05
+[bibdeca(bel06,Lavatorio - V.L.)]^C^C_insert bel06
+[bibdeca(bel07,Bide c/ 3 furos)]^C^C_insert bel07
+[bibdeca(bel08,Bide - V.F.)]^C^C_insert bel08
+[bibdeca(bel09,Bide - V.L.)]^C^C_insert bel09
+[bibdeca(bel10,Bacia convenc.)]^C^C_insert bel10
+[bibdeca(bel11,Bacia - V.F.)]^C^C_insert bel11
+[bibdeca(bel12,Bacia - V.L.)]^C^C_insert bel12
+[bibdeca(bel13,Bacia cx acoplada)]^C^C_insert bel13
+[bibdeca(bel14,Bacia - V.F.)]^C^C_insert bel14
+[bibdeca(bel15,Bacia - V.L.)]^C^C_insert bel15
+
+**icon_louca2
+[Linha CARRARA]
+[bibdeca(car01,Lav. c/ coluna)]^C^C_insert car01
+[bibdeca(car02,Lavatorio - V.F.)]^C^C_insert car02
+[bibdeca(car03,Lavatorio - V.L.)]^C^C_insert car03
+[bibdeca(car04,Lav. semi-encaixe)]^C^C_insert car04
+[bibdeca(car05,Lavatorio - V.F.)]^C^C_insert car05
+[bibdeca(car06,Lavatorio - V.L.)]^C^C_insert car06
+[bibdeca(car07,Cuba de sobrepor)]^C^C_insert car07
+[bibdeca(car08,Cuba - V.F.)]^C^C_insert car08
+[bibdeca(car09,Cuba - V.L.)]^C^C_insert car09
+[bibdeca(car10,Cuba de embutir)]^C^C_insert car10
+[bibdeca(car11,Cuba - V.F.)]^C^C_insert car11
+[bibdeca(car12,Cuba - V.L.)]^C^C_insert car12
+[bibdeca(car13,Bide c/ 3 furos)]^C^C_insert car13
+[bibdeca(car14,Bide - V.F.)]^C^C_insert car14
+[bibdeca(car15,Bide - V.L.)]^C^C_insert car15
+[bibdeca(car16,Bacia convenc.)]^C^C_insert car16
+[bibdeca(car17,Bacia V.F.)]^C^C_insert car17
+[bibdeca(car18,Bacia V.L.)]^C^C_insert car18
+[bibdeca(car19,Bacia cx acoplada)]^C^C_insert car19
+[bibdeca(car20,Bacia - V.F.)]^C^C_insert car20
+[bibdeca(car21,Bacia - V.L.)]^C^C_insert car21
+
+**icon_louca3
+[Linha DE VILLE]
+[bibdeca(dev01,Lav. c/ coluna)]^C^C_insert dev01
+[bibdeca(dev02,Lavatorio - V.F.)]^C^C_insert dev02
+[bibdeca(dev03,Lavatorio - V.L.)]^C^C_insert dev03
+[bibdeca(dev04,Cuba de sobrepor)]^C^C_insert dev04
+[bibdeca(dev05,Cuba - V.F.)]^C^C_insert dev05
+[bibdeca(dev06,Cuba - V.L.)]^C^C_insert dev06
+[bibdeca(dev07,Bide c/ 3 furos)]^C^C_insert dev07
+[bibdeca(dev08,Bide - V.F.)]^C^C_insert dev08
+[bibdeca(dev09,Bide - V.L.)]^C^C_insert dev09
+[bibdeca(dev10,Bacia conv.)]^C^C_insert dev10
+[bibdeca(dev11,Bacia - V.F.)]^C^C_insert dev11
+[bibdeca(dev12,Bacia - V.L.)]^C^C_insert dev12
+[bibdeca(dev13,Bacia cx acoplada)]^C^C_insert dev13
+[bibdeca(dev14,Bacia - V.F.)]^C^C_insert dev14
+[bibdeca(dev15,Bacia - V.L.)]^C^C_insert dev15
+
+**icon_louca4
+[Linha LINEA DUOMO PLUS]
+[bibdeca(duo04,Lav. c/ coluna)]^C^C_insert duo04
+[bibdeca(duo05,Lavatorio - V.F.)]^C^C_insert duo05
+[bibdeca(duo06,Lavatorio - V.L.)]^C^C_insert duo06
+[bibdeca(duo01,Cuba de sobrepor)]^C^C_insert duo01
+[bibdeca(duo02,Cuba - V.F.)]^C^C_insert duo02
+[bibdeca(duo03,Cuba - V.L.)]^C^C_insert duo03
+[bibdeca(duo07,Bide c/ 3 furos)]^C^C_insert duo07
+[bibdeca(duo08,Bide - V.F.)]^C^C_insert duo08
+[bibdeca(duo09,Bide - V.L.)]^C^C_insert duo09
+[bibdeca(duo10,Bacia conv.)]^C^C_insert duo10
+[bibdeca(duo11,Bacia - V.F.)]^C^C_insert duo11
+[bibdeca(duo12,Bacia - V.L.l)]^C^C_insert duo12
+[bibdeca(duo13,Bacia cx acoplada)]^C^C_insert duo13
+[bibdeca(duo14,Bacia - V.F.)]^C^C_insert duo14
+[bibdeca(duo15,Bacia - V.L.)]^C^C_insert duo15
+
+**icon_louca5
+[Linha MONTE CARLO]
+[bibdeca(mon07,Lav. c/ coluna)]^C^C_insert mon07
+[bibdeca(mon08,Lavatorio - V.F.)]^C^C_insert mon08
+[bibdeca(mon09,Lavatorio - V.L.)]^C^C_insert mon09
+[bibdeca(mon10,Lav. col suspensa)]^C^C_insert mon10
+[bibdeca(mon11,Lavatorio - V.F.)]^C^C_insert mon11
+[bibdeca(mon12,Lavatorio - V.L.)]^C^C_insert mon12
+[bibdeca(mon01,Lav. semi-encaixe)]^C^C_insert mon01
+[bibdeca(mon02,Lavatorio - V.F.)]^C^C_insert mon02
+[bibdeca(mon03,Lavatorio - V.L.)]^C^C_insert mon03
+[bibdeca(mon04,Cuba de sobrepor)]^C^C_insert mon04
+[bibdeca(mon05,Cuba - V.F.)]^C^C_insert mon05
+[bibdeca(mon06,Cuba - V.L.)]^C^C_insert mon06
+[bibdeca(mon14,Bide c/ 1 furo)]^C^C_insert mon14
+[bibdeca(mon13,Bide c/ 3 furos)]^C^C_insert mon13
+[bibdeca(mon15,Bide - V.F.)]^C^C_insert mon15
+[bibdeca(mon16,Bide - V.L.)]^C^C_insert mon16
+[bibdeca(mon17,Bacia conv.)]^C^C_insert mon17
+[bibdeca(mon18,Bacia - V.F.)]^C^C_insert mon18
+[bibdeca(mon19,Bacia - V.L.)]^C^C_insert mon19
+[bibdeca(mon20,Bacia cx acoplada)]^C^C_insert mon20
+[bibdeca(mon21,Bacia - V.F.)]^C^C_insert mon21
+[bibdeca(mon22,Bacia - V.L.)]^C^C_insert mon22
+
+**icon_louca6
+[Linha RAVENA]
+[bibdeca(rav01,Lav.  c/ coluna)]^C^C_insert rav01
+[bibdeca(rav02,Lavavorio - V.F.)]^C^C_insert rav02
+[bibdeca(rav03,Lavatorio - V.L.)]^C^C_insert rav03
+[bibdeca(rav04,Cuba de sobrepor)]^C^C_insert rav04
+[bibdeca(rav05,Cuba - V.F.)]^C^C_insert rav05
+[bibdeca(rav06,Cuba - V.L.)]^C^C_insert rav06
+[bibdeca(rav07,Bide com 3 furos)]^C^C_insert rav07
+[bibdeca(rav08,Bide - V.F.)]^C^C_insert rav08
+[bibdeca(rav09,Bide - V.L.)]^C^C_insert rav09
+[bibdeca(rav10,Bacia conv.)]^C^C_insert rav10
+[bibdeca(rav11,Bacia - V.F.)]^C^C_insert rav11
+[bibdeca(rav12,Bacia - V.L.)]^C^C_insert rav12
+[bibdeca(rav13,Bacia cx acoplada)]^C^C_insert rav13
+[bibdeca(rav14,Bacia - V.F.)]^C^C_insert rav14
+[bibdeca(rav15,Bacia - V.L.)]^C^C_insert rav15
+
+**icon_louca7
+[Linha RITZ]
+[bibdeca(rit01,Lav.  c/ coluna)]^C^C_insert rit01
+[bibdeca(rit02,Lavavorio - V.F.)]^C^C_insert rit02
+[bibdeca(rit03,Lavatorio - V.L.)]^C^C_insert rit03
+[bibdeca(rit04,Cuba de sobrepor)]^C^C_insert rit04
+[bibdeca(rit05,Cuba - V.F.)]^C^C_insert rit05
+[bibdeca(rit06,Cuba - V.L.)]^C^C_insert rit06
+[bibdeca(rit13,Bide com 3 furos)]^C^C_insert rit13
+[bibdeca(rit14,Bide - V.F.)]^C^C_insert rit14
+[bibdeca(rit15,Bide - V.L.)]^C^C_insert rit15
+[bibdeca(rit07,Bacia conv.)]^C^C_insert rit07
+[bibdeca(rit08,Bacia - V.F.)]^C^C_insert rit08
+[bibdeca(rit09,Bacia - V.L.)]^C^C_insert rit09
+[bibdeca(rit10,Bacia cx acoplada)]^C^C_insert rit10
+[bibdeca(rit11,Bacia - V.F.)]^C^C_insert rit11
+[bibdeca(rit12,Bacia - V.L.)]^C^C_insert rit12
+
+**icon_louca8
+[Linha VILLAGE]
+[bibdeca(vil01,Lav.  c/ coluna)]^C^C_insert vil01
+[bibdeca(vil02,Lavavorio - V.F.)]^C^C_insert vil02
+[bibdeca(vil03,Lavatorio - V.L.)]^C^C_insert vil03
+[bibdeca(vil04,Cuba de sobrepor)]^C^C_insert vil04
+[bibdeca(vil05,Cuba - V.F.)]^C^C_insert vil05
+[bibdeca(vil06,Cuba - V.L.)]^C^C_insert vil06
+[bibdeca(vil13,Bide com 3 furos)]^C^C_insert vil13
+[bibdeca(vil14,Bide - V.F.)]^C^C_insert vil14
+[bibdeca(vil15,Bide - V.L.)]^C^C_insert vil15
+[bibdeca(vil07,Bacia conv.)]^C^C_insert vil07
+[bibdeca(vil08,Bacia - V.F.)]^C^C_insert vil08
+[bibdeca(vil09,Bacia - V.L.)]^C^C_insert vil09
+[bibdeca(vil10,Bacia cx acoplada)]^C^C_insert vil10
+[bibdeca(vil11,Bacia - V.F.)]^C^C_insert vil11
+[bibdeca(vil12,Bacia - V.L.)]^C^C_insert vil12
+
+**icon_louca9
+[Linha Vogue Plus]
+[bibdeca(vog01,Lav. c/ coluna)]^C^C_insert vog01
+[bibdeca(vog02,Lavatorio - V.F.)]^C^C_insert vog02
+[bibdeca(vog03,Lavatorio - V.L.)]^C^C_insert vog03
+[bibdeca(vog04,Lav. col suspensa)]^C^C_insert vog04
+[bibdeca(vog05,Lavatorio - V.F.)]^C^C_insert vog05
+[bibdeca(vog06,Lavatorio - V.L.)]^C^C_insert vog06
+[bibdeca(vog07,Bide c/ 3 furos)]^C^C_insert vog07
+[bibdeca(vog08,Bide - V.F.)]^C^C_insert vog08
+[bibdeca(vog09,Bide - V.L.)]^C^C_insert vog09
+[bibdeca(vog10,Bacia conv.)]^C^C_insert vog10
+[bibdeca(vog11,Bacia - V.F.)]^C^C_insert vog11
+[bibdeca(vog12,Bacia - V.L.)]^C^C_insert vog12
+[bibdeca(vog13,Bacia cx acoplada)]^C^C_insert vog13
+[bibdeca(vog14,Bacia - V.F.)]^C^C_insert vog14
+[bibdeca(vog15,Bacia - V.L.)]^C^C_insert vog15
+
+**icon_louca10
+[Linha Windsor]
+[bibdeca(win01,Lav. c/ coluna)]^C^C_insert win01
+[bibdeca(win02,Lavatorio - V.F.)]^C^C_insert win02
+[bibdeca(win03,Lavatorio - V.L.)]^C^C_insert win03
+[bibdeca(win04,Lav. c/ coluna)]^C^C_insert win04
+[bibdeca(win05,Lavatorio - V.F.)]^C^C_insert win05
+[bibdeca(win06,Lavatorio -V.L.)]^C^C_insert win06
+[bibdeca(win07,Bide c/ 3 furos)]^C^C_insert win07
+[bibdeca(win08,Bide - V.F.)]^C^C_insert win08
+[bibdeca(win09,Bide - V.L.)]^C^C_insert win09
+[bibdeca(win10,Bacia conv.)]^C^C_insert win10
+[bibdeca(win11,Bacia - V.F.)]^C^C_insert win11
+[bibdeca(win12,Bacia - V.L.)]^C^C_insert win12
+[bibdeca(win13,Bacia cx acoplada)]^C^C_insert win13
+[bibdeca(win14,Bacia - V.F.)]^C^C_insert win14
+[bibdeca(win15,Bacia - V.L.)]^C^C_insert win15
+
+**icon_acess1
+[Acessorios de Louca]
+[bibdeca(ace05,Cabide - V.F.)]^C^C_insert ace05
+[bibdeca(ace06,Cabide - V.L.)]^C^C_insert ace06
+[bibdeca(ace03,Cab Duplo - V.F.)]^C^C_insert ace03
+[bibdeca(ace04,Cab Duplo - V.L.)]^C^C_insert ace04
+[bibdeca(ace07,Papeleira - V.F.)]^C^C_insert ace07
+[bibdeca(ace08,Papeleira - V.L.)]^C^C_insert ace08
+[bibdeca(ace01,P. Toalha - V.F.)]^C^C_insert ace01
+[bibdeca(ace02,P. Toalha - V.L.)]^C^C_insert ace02
+[bibdeca(ace09,Saboneteira V.F.)]^C^C_insert ace09
+[bibdeca(ace10,Saboneteira V.L.)]^C^C_insert ace10
+[bibdeca(ace11,Meia Sab. - V.F.)]^C^C_insert ace11
+[bibdeca(ace12,Meia Sab. - V.L.)]^C^C_insert ace12
+
+**icon_cuba1
+[Cubas]
+[bibdeca(cub01,Cuba emb. oval)]^C^C_insert cub01
+[bibdeca(cub02,Cuba - V.F.)]^C^C_insert cub02
+[bibdeca(cub03,Cuba - V.L.)]^C^C_insert cub03
+[bibdeca(cub04,Cuba emb. redonda)]^C^C_insert cub04
+[bibdeca(cub05,Cuba - V.F.)]^C^C_insert cub05
+[bibdeca(cub06,Cuba - V.L.)]^C^C_insert cub06
+[bibdeca(cub07,Cuba emb. retang.)]^C^C_insert cub07
+[bibdeca(cub08,Cuba - V.F.)]^C^C_insert cub08
+[bibdeca(cub09,Cuba - V.L.)]^C^C_insert cub09
+[bibdeca(cub10,Cuba de subrepor)]^C^C_insert cub10
+[bibdeca(cub11,Cuba - V.F.)]^C^C_insert cub11
+[bibdeca(cub12,Cuba - V.L.)]^C^C_insert cub12
+
+**icon_mictorio1
+[Cubas]
+[bibdeca(mic01,Mictorio M711)]^C^C_insert mic01
+[bibdeca(mic02,Mictorio - V.F.)]^C^C_insert mic02
+[bibdeca(mic03,Mictorio - V.L.)]^C^C_insert mic03
+[bibdeca(mic04,Mictorio M712)]^C^C_insert mic04
+[bibdeca(mic05,Mictorio - V.F.)]^C^C_insert mic05
+[bibdeca(mic06,Mictorio - V.L.)]^C^C_insert mic06
+
+**icon_tanque1
+[Cubas]
+[bibdeca(tan01,Tanque TQ11)]^C^C_insert tan01
+[bibdeca(tan02,Tanque - V.F.)]^C^C_insert tan02
+[bibdeca(tan03,Tanque - V.L.)]^C^C_insert tan03
+[bibdeca(tan04,Tanque TQ25)]^C^C_insert tan04
+[bibdeca(tan05,Tanque - V.F.)]^C^C_insert tan05
+[bibdeca(tan06,Tanque - V.L.)]^C^C_insert tan06
+
+//
+//      Begin AutoCAD Screen Menus
+//
+
+***SCREEN
+**S
+[AutoCAD ]^C^C^P(ai_rootmenus) ^P
+[* * * * ]$S=OSNAP
+[FILE    ]$S=01_FILE
+[ASSIST  ]$S=02_ASSIST
+[VIEW    ]$S=03_VIEW
+[DRAW 1  ]$S=04_DRAW1
+[DRAW 2  ]$S=05_DRAW2
+[DRAW DIM]$S=06_DRAWDIM
+[CONSTRCT]$S=07_CONSTRUCT
+[MODIFY  ]$S=08_MODIFY
+[MOD DIM ]$S=09_MODDIM
+[DATA    ]$S=10_DATA
+[OPTIONS ]$S=11_OPTIONS
+[TOOLS   ]$S=12_TOOLS
+
+[HELP    ]$S=13_HELP
+
+
+
+
+
+
+
+
+[SERVICE]$S=service
+[LAST   ]$S=
+
+**SNAP_TO 28
+[App Int ]_appint
+
+[CENter  ]_cen
+[ENDPoint]_endp
+[INSert  ]_ins
+[INTersec]_int
+[MIDpoint]_mid
+[NEArest ]_nea
+[NODe    ]_nod
+[PERpend ]_per
+[QUAdrant]_qua
+[QUIck   ]_qui
+[TANgent ]_tan
+[NONe    ]_non
+
+[FROM    ]_from
+
+
+
+
+**GRIP_EDIT 3
+[Grip    ]
+[ Edit   ]
+
+[MOve    ]_mo
+[MIrror  ]_mi
+[Rotate  ]_r
+[SCale   ]_sc
+[STretch ]_st
+
+[Base pt ]_b
+[Copy    ]_c
+[Referenc]_r
+[Undo    ]_u
+[eXit    ]_x
+[Cancel: ]^c
+
+
+
+
+
+
+
+**01_FILE 3
+[New:    ]^C^C_new
+
+[Open:   ]^C^C_open
+[Save:   ]^C^C_qsave
+[SaveAs: ]^C^C_saveas
+
+[Print:  ]^C^C_plot
+
+[Xref:   ]^C^C_xref
+[Xbind:  ]^C^C_xbind
+
+[IMPORT  ]$S=011_IMPORT
+[EXPORT  ]$S=012_EXPORT
+
+[MANAGE  ]$S=013_MANAGE
+
+[Exit:   ]^C^C_quit
+
+
+
+
+
+**011_IMPORT 3
+[DXFin:  ]^C^C_dxfin
+[DXBin:  ]^C^C_dxbin
+
+[3DSin:  ]^C^C_3dsin
+[SATin:  ]^C^C_acisin
+
+[PSin:   ]^C^C_psin
+[PSdrag: ]'_psdrag
+[PSquali:]'_psquality
+
+[PCXin:  ]^C^C_pcxin
+[GIFin:  ]^C^C_gifin
+[TIFFin: ]^C^C_tiffin
+
+
+
+
+
+
+
+
+
+**012_EXPORT 3
+[Wblock: ]^C^C_wblock
+[SaveR12:]^C^C_saveasr12
+[DXFout: ]^C^C_dxfout
+
+[3DSout: ]^C^C_3dsout
+[ACISout:]^C^C_acisout
+[STLout: ]^C^C_stlout
+
+[PSout:  ]^C^C_psout
+[PSprolg:]'_psprolog
+
+[DDattEx:]^C^C_ddattext
+
+
+
+
+
+
+
+
+
+
+**013_MANAGE 3
+[Arx:    ]^C^C_arx
+
+[Files:  ]^C^C_files
+
+[Audit:  ]^C^C_audit
+
+[Recover:]^C^C_recover
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**02_ASSIST 3
+[Undo:   ]^C^C_undo
+[Redo:   ]^C^C_redo
+
+[Osnap:]'_osnap
+
+[Snap:   ]'_snap
+[Grid:   ]'_grid
+[Ortho:  ]'_ortho
+
+[Select: ]^C^C_select
+[Filter: ]'_filter
+
+[Group:  ]^C^C_group
+[PikStyl:]^C^C_pickstyle
+
+[INQUIRY ]$S=021_INQUIRY
+
+[Cancel: ]^C^C^C
+
+
+
+
+**021_INQUIRY 3
+[List:   ]^C^C_list
+
+[ID:     ]'_id
+[Dist:   ]'_dist
+[Area:   ]^C^C_area
+[MassPro:]^C^C_massprop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**03_VIEW 3
+[Redraw: ]'_redraw
+[RedrwAl:]'_redrawall
+
+[Zoom:   ]'_zoom
+[Pan:    ]'_pan
+
+[DDview: ]^C^C_ddview
+[Plan:   ]^C^C_plan
+[Vpoint: ]^C^C_vpoint
+[Dview:  ]^C^C_dview
+
+[Tilemod:]^C^C_tilemode
+[Mspace: ]^C^C_mspace
+[Pspace: ]^C^C_pspace
+
+[Vports: ]^C^C_vports
+[TileVpt:]^C^C^P(ai_tiledvp_chk nil) ^P
+[Mview:  ]^C^C_mview
+
+[DDucsp: ]^C^C_dducsp
+[DDucs:  ]^C^C_dducs
+[UCS:    ]^C^C_ucs
+**04_DRAW1 3
+[Line:   ]^C^C_line
+[Xline:  ]^C^C_xline
+[Ray:    ]^C^C_ray
+[Sketch: ]^C^C_sketch
+
+[Pline:  ]^C^C_pline
+[3Dpoly: ]^C^C_3dpoly
+[Mline:  ]^C^C_mline
+
+[Spline: ]^C^C_spline
+[Arc:    ]^C^C_arc
+[Circle: ]^C^C_circle
+[Donut:  ]^C^C_donut
+[Ellipse:]^C^C_ellipse
+
+[Rectang:]^C^C_rectang
+[Polygon:]^C^C_polygon
+[Solid:  ]^C^C_solid
+
+
+
+
+**05_DRAW2 3
+[Point:  ]*^C^C_point
+[Divide: ]^C^C_divide
+[Measure:]^C^C_measure
+
+[DDinsert]^C^C_ddinsert
+[Insert: ]^C^C_insert
+[Minsert:]^C^C_minsert
+
+[Shape:  ]^C^C_shape
+
+[SURFACES]$S=3D
+[SOLIDS  ]$S=051_SOLIDS
+
+[Mtext:  ]^C^C_mtext
+[DText:  ]^C^C_dtext
+
+[Style:  ]^C^C_style
+
+[Trace:  ]^C^C_trace
+
+
+**051_SOLIDS 3
+[Box:    ]^C^C_box
+[Cone:   ]^C^C_cone
+[Cylindr:]^C^C_cylinder
+[Sphere: ]^C^C_sphere
+[Torus:  ]^C^C_torus
+[Wedge:  ]^C^C_wedge
+
+[Extrude:]^C^C_extrude
+[Revolve:]^C^C_revolve
+
+[Slice:  ]^C^C_slice
+[Section:]^C^C_section
+[Intrfer:]^C^C_interfere
+
+[Union:  ]^C^C_union
+[Subtrac:]^C^C_subtract
+[Intrsec:]^C^C_intersect
+
+[AMEconv:]^C^C_ameconvert
+
+
+
+
+**06_DRAWDIM 3
+[Linear: ]^C^C_dimlinear
+[Aligned:]^C^C_dimaligned
+
+[Diametr:]^C^C_dimdiameter
+[Radius: ]^C^C_dimradius
+
+[Angular:]^C^C_dimangular
+[Ordinat:]^C^C_dimordinate
+
+[Baselin:]^C^C_dimbaseline
+[Continu:]^C^C_dimcontinue
+
+[Center: ]^C^C_dimcenter
+[Leader: ]^C^C_leader
+[Toleran:]^C^C_tolerance
+
+[DDim:   ]^C^C_ddim
+[DimStyl:]^C^C_dimstyle
+
+
+
+
+
+**DIM 3
+[Linear: ]^C^C_dimlinear
+[Aligned:]^C^C_dimaligned
+
+[Diametr:]^C^C_dimdiameter
+[Radius: ]^C^C_dimradius
+
+[Angular:]^C^C_dimangular
+[Ordinat:]^C^C_dimordinate
+
+[Baselin:]^C^C_dimbaseline
+[Continu:]^C^C_dimcontinue
+
+[Center: ]^C^C_dimcenter
+[Leader: ]^C^C_leader
+[Toleran:]^C^C_tolerance
+
+[DDim:   ]^C^C_ddim
+[DimStyl:]^C^C_dimstyle
+
+
+
+
+**07_CONSTRUCT 3
+[Copy:   ]$m=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_copy,^C^C_copy)
+[Offset: ]^C^C_offset
+[Mirror: ]$m=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_mirror,^C^C_mirror)
+[Array:  ]^C^C_array
+
+[Chamfer:]^C^C_chamfer
+[Fillet: ]^C^C_fillet
+
+[Bhatch: ]^C^C_bhatch
+[Boundar:]^C^C_boundary
+[Region: ]^C^C_region
+[PSfill: ]^C^C_psfill
+
+[DDatDef:]^C^C_ddattdef
+
+[3Darray:]^C^C_3darray
+[Mirro3D:]^C^C_mirror3d
+[Rotat3D:]^C^C_rotate3d
+
+
+
+
+**08_MODIFY 3
+[Modify: ]^C^C_ddmodify
+[Change: ]^C^C_change
+[Ddchpro:]^C^C_ddchprop
+[Move:   ]$m=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_move,^C^C_move)
+[Rotate: ]$m=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_rotate,^C^C_rotate)
+[Align:  ]^C^C_align
+[Stretch:]$m=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_stretch,^C^C_stretch)
+[Scale:  ]$m=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_scale,^C^C_scale)
+[Lengthn:]^C^C_lengthen
+[Trim:   ]^C^C_trim
+[Extend: ]^C^C_extend
+[Break:  ]^C^C_break
+[Pedit:  ]^C^C_pedit
+[Mledit: ]^C^C_mledit
+[SplinEd:]^C^C_splinedit
+[DDedit: ]^C^C_ddedit
+[HatchEd:]^C^C_hatchedit
+[AttEd:  ]^C^C_ddatte
+[Explode:]^C^C_explode
+[Erase:  ]^C^C_erase
+[Oops:   ]^C^C_oops
+
+**09_MODDIM 3
+[DimEdit:]^C^C_dimedit 
+
+[DimTedt:]^C^C_dimtedit
+
+[DimStyl:]^C^C_dimstyle
+
+[DDim:   ]^C^C_ddim
+
+[Overrid:]^C^C_dimoverride
+
+
+
+
+
+
+
+
+
+
+
+
+
+**10_DATA 3
+[DDemode:]'_ddemodes
+
+[DDlmode:]'_ddlmodes
+[VPlayer:]^C^C_vplayer
+
+[Color:  ]'_color
+[DDltype:]'_ddltype
+[MLstyle:]^C^C_mlstyle
+[Style:  ]'_style
+[DDim:   ]^C^C_ddim
+[Load:   ]^C^C_load
+
+[Units:  ]'_ddunits
+[Limits: ]'_limits
+[Time:   ]'_time
+[Status: ]^C^C_status
+
+[Rename: ]^C^C_ddrename
+[Purge:  ]^C^C_purge
+
+
+
+**11_OPTIONS 3
+[DDrmode:]'_ddrmodes
+[DDosnap:]'_ddosnap
+[Coords: ]'_coords
+
+[DDselec:]'_ddselect
+[DDgrips:]'_ddgrips
+
+[UCSicon:]^C^C_ucsicon
+[UCSfoll:]'_ucsfollow
+
+[DISPLAY ]$S=111_DISPLAY
+[Viewres:]^C^C_viewres
+[Regenmo:]^C^C_regenmode
+[Dragmod:]^C^C_dragmode
+[Psltcal:]'_psltscale
+
+[Config: ]^C^C_config
+[DlgColr:]^C^C_dlgcolor
+[Tablet: ]^C^C_tablet
+
+[SaveTim:]'_savetime
+[Sys Var:]^C^C_setvar
+**111_DISPLAY 3
+[Fill:   ]'_fill
+
+[SplFram:]'_splframe
+
+[AttDisp:]^C^C_attdisp
+
+[DDptype:]'_ddptype
+
+[TxtFill:]'_textfill
+
+[TxtQlty:]'_textqlty
+
+[Qtext:  ]'_qtext
+
+[LTscale:]'_ltscale
+
+[PSltscl:]'_psltscale
+
+[PlinGen:]'_plinegen
+
+
+
+**12_TOOLS 3
+[Appload:]^C^C_appload
+[Script: ]^C^C_script
+[TextScr:]'_textscr
+
+[EXT DBMS]$S=122_EXTDBMS
+
+
+[Hide:   ]^C^C_hide
+[SHADE   ]$S=shade
+[RENDER  ]$S=123_RENDER
+[Vslide: ]^C^C_vslide
+[Mslide: ]^C^C_mslide
+[SaveImg:]^C^C_saveimg
+[Replay: ]^C^C_replay
+
+[Spell:  ]^C^C_spell
+[GeomCal:]'_cal
+
+[Menu:   ]^C^C_menu
+[Reinit: ]^C^C_reinit
+[Compile:]^C^C_compile
+
+**122_EXTDBMS 3
+[Admin:  ]^C^C_aseadmin
+
+[Rows:   ]^C^C_aserows
+
+[Links:  ]^C^C_aselinks
+
+[Select: ]^C^C_aseselect
+
+[Export: ]^C^C_aseexport
+
+[SQLedit:]^C^C_asesqled
+
+
+
+
+
+
+
+
+
+
+
+**123_RENDER 3
+[Render: ]^C^C_render
+
+[Scenes: ]^C^C_scene
+[Views:  ]^C^C_ddview
+[Lights: ]^C^C_light
+
+[Mater'l:]^C^C_rmat
+[MatLib: ]^C^C_matlib
+
+[Prefer: ]^C^C_rpref
+[Stats:  ]^C^C_stats
+
+[Config: ]^C^C_rconfig
+
+
+
+
+
+
+
+
+
+**13_HELP 3
+[Help    ]'_help
+
+[About   ]'_about
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SERVICE 3
+[Last    ]_l
+[Previous]_p
+[ALL     ]_all
+[CPolygon]_cp
+[WPolygon]_wp
+[Fence   ]_f
+[Group   ]_g
+[Add     ]_a
+[Remove  ]_r
+[Undo    ]_u
+[Filters ]_'filter
+.x
+.y
+.z
+.xy
+.xz
+.yz
+[Osnap:  ]'_ddosnap
+[DrawAid:]'_ddrmodes
+[Entity: ]'_ddemodes
+[Layer:  ]'_ddlmodes
+[Group:  ]^C^C_group 
+**3D 3
+[Box:    ]^C^Cai_box
+[Cone:   ]^C^Cai_cone
+[Dish:   ]^C^Cai_dish
+[Dome:   ]^C^Cai_dome
+[Mesh:   ]^C^Cai_mesh
+[Pyramid:]^C^Cai_pyramid
+[Sphere: ]^C^Cai_sphere
+[Torus:  ]^C^Cai_torus
+[Wedge:  ]^C^Cai_wedge
+
+[3Dface: ]^C^C_3dface
+[3Dpoly: ]^C^C_3dpoly
+[Revsurf:]^C^C_revsurf
+[Tabsurf:]^C^C_tabsurf
+[Rulsurf:]^C^C_rulesurf
+[Edgsurf:]^C^C_edgesurf
+[Surftb1:]'_surftab1
+[Surftb2:]'_surftab2
+
+[3dmesh: ]^C^C_3dmesh
+[Pface:  ]^C^C_pface
+
+**3DARRAY 3
+[3Darray:]^C^C_3darray
+
+[Rectang ]_r
+[Polar   ]_p
+
+[Yes     ]_y
+[No      ]_n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**3DFACE 3
+[3Dface: ]^C^C_3dface
+
+[Invisibl]_i
+
+[ShowEdge]^P(setvar "splframe" 1)(ai_showedge_alert) ^P
+[HideEdge]^P(setvar "splframe" 0)(ai_hideedge_alert) ^P
+
+[Edge:   ]^C^C_edge
+[DDmodif:]^C^C_ddmodify
+
+
+
+
+
+
+
+
+
+
+
+
+
+**3DMESH 3
+[3Dmesh: ]^C^C_3dmesh
+
+[3Dobjec:]^C^C_3d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**3DPOLY 3
+[3dpoly: ]^C^C_3dpoly
+
+[Close   ]_c
+[Undo    ]_u
+
+@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_BOX 3
+[Box:    ]^C^C_ai_box
+
+[Cube    ]_c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_CONE 3
+[Cone:   ]^C^C_ai_cone
+
+[Diameter]_d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_DISH 3
+[Dish:   ]^C^C_ai_dish
+
+[Diameter]_d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_DOME 3
+[Dome:   ]^C^C_ai_dome
+
+[Diameter]_d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_MESH 3
+[Mesh:   ]^C^C_ai_mesh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_PYRAMID 3
+[Pyramid:]^C^C_ai_pyramid
+
+[TetraHdn]_t
+
+[Ridge   ]_r  
+[Top     ]_t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_SPHERE 3
+[Sphere: ]^C^C_ai_sphere
+
+[Diameter]_d
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_TORUS 3
+[Torus:  ]^C^C_ai_torus
+
+[Diameter]_d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AI_WEDGE 3
+[Wedge:  ]^C^C_ai_wedge
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ALIGN 3
+[Align:  ]^C^C_align
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**AMECONVERT 3
+[AMEconv:]^C^C_ameconvert
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**APERTURE 3
+[Apertur:]'_aperture
+
+[DDosnap:]'_ddosnap
+
+[Pickbox:]'_pickbox
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ARC 3
+[Arc:    ]^C^C_arc
+
+[3-point ]\\
+[St,C,End]\_c \
+[St,C,Ang]\_c \_a
+[St,C,Len]\_c \_l
+[St,E,Ang]\_e \_a
+[St,E,Dir]\_e \_d
+[St,E,Rad]\_e \_r
+[Ce,S,End]_c \\
+[Ce,S,Ang]_c \\_a
+[Ce,S,Len]_c \\_l
+
+[ArcCont:]^C^C_arc ;
+[LinCont:]^C^C_line ;
+
+
+ 
+
+
+
+
+**AREA 3
+[Area:   ]^C^C_area
+
+[Object  ]_o
+[Add     ]_a
+[Subtract]_s
+
+[Boundary]^C^C_boundary
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ARRAY 3
+[Array:  ]^C^C_array
+
+
+
+[Rectang ]_r
+[Polar   ]_p
+
+[Yes     ]_y
+[No      ]_n
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ATTDEF 3
+[Attdef: ]^C^C_attdef
+[DDattdf:]^C^C_ddattdef
+
+[Invisibl]_i
+[Constant]_c
+[Verify  ]_v
+[Preset  ]_p
+[Justify ]_j
+[Align   ]_an
+[Fit     ]_f
+[Center  ]_c
+[Middle  ]_m
+[Right   ]_r
+[Top Left]_tl
+[Top Cent]_tc
+[Top Rght]_tr
+[Mid Left]_ml
+[Mid Cent]_mc
+[Mid Rght]_mr
+[Bot Left]_bl
+[Bot Cent]_bc
+[Bot Rght]_br
+**ATTDISP 3
+[Attdisp:]'_attdisp
+
+[Normal  ]_n
+[ON      ]_on
+[OFf     ]_of
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ATTEDIT 3
+[Attedit:]^C^C_attedit
+
+[DDatte: ]^C^C_ddatte
+
+[Yes     ]_y
+[No      ]_n
+
+[Value   ]_v
+[Position]_p
+[Height  ]_h
+[Angle   ]_a
+[Style   ]_s
+[Layer   ]_l
+[Color   ]_c
+[Next    ]_n
+
+[ColorDlg](acad_colordlg 256)
+
+
+ 
+
+
+**ATTEXT 3
+[Attext: ]^C^C_attext
+
+[DDattex:]^C^C_ddattext
+
+[CDF     ]_c
+[SDF     ]_s
+[DXF     ]_d
+[Entities]_e
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+**AUDIT 3
+[Audit:  ]^C^C_audit
+
+[Yes     ]_y
+[No      ]_n
+
+[Auditct:]'_auditctl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**BASE 3
+[Base:   ]^C^C_base
+
+[Wblock: ]^C^C_wblock
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**BLOCK 3
+[Block:  ]^C^C_block
+
+
+[List?   ]?
+[Yes     ]_y
+
+[Oops:   ]^C^C_oops
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**BOX 3
+[Box: ]^C^C_box
+
+[Center  ]_ce
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**BREAK 3
+[Break:  ]^C^C_break
+
+[First   ]_f
+@
+
+[Sel, 2nd]\\
+[Sel Pt  ]\@
+[Sel,2Pts]\_first \
+[Sel, 1st]\_first \@
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+**CHAMFER 3
+[Chamfer:]^C^C_chamfer
+
+[Distance]_d \\_chamfer
+[Dist = 0]_d 0 0 _chamfer
+[Angle   ]_a \\ _chamfer
+[Polyline]_p
+
+[Trim    ]_t
+[No Trim ]_n
+
+[Method  ]_m
+[Distance]_d
+[Angle   ]_a
+
+
+ 
+
+
+
+
+
+
+**CHANGE 3
+[Change: ]^C^C_change
+
+[DDchprp:]^C^C_ddchprop
+[DDmodif:]^C^C_ddmodify
+
+
+
+[Color   ]_p _c (acad_colordlg 256)
+[Elevatio]_p _e
+[Layer   ]_p _la
+[Ltype   ]_p _lt
+[Thicknes]_p _t
+
+
+
+
+
+
+
+
+
+
+**CHPROP 3
+[Chprop: ]^C^C_chprop
+
+[DDchprp:]^C^C_ddchprop
+[DDmodif:]^C^C_ddmodify
+
+
+
+[Color   ]_c
+[LAyer   ]_la
+[LType   ]_lt
+[Thicknes]_t
+
+[ColorDlg](acad_colordlg 256)
+
+
+
+
+
+
+
+
+
+**CIRCLE 3
+[Circle: ]^C^C_circle
+
+[Cen,Rad ]\\
+
+[Cen,Dia ]\_d
+
+[2-Point ]_2p \
+[3-Point ]_3p \\
+
+[TTR     ]_ttr
+[TaTaTan:]_3p _tan \_tan \_tan \
+
+[Copy Rad]^C^C_circlerad '_cal rad;
+
+
+
+
+
+
+
+
+
+
+**COLOR 3
+[Color:  ]'_color
+
+[Bylayer ]_bylayer
+[Byblock ]_byblock
+[Red     ]_re
+[Yellow  ]_ye
+[Green   ]_gr
+[Cyan    ]_cy
+[Blue    ]_bl
+[Magenta ]_ma
+[White   ]_wh
+
+[ColorDlg]'_color (acad_colordlg 256)
+
+[Chroma]^C^C_vslide acad(chroma)
+[ Redraw]^C^C_redraw
+
+
+
+
+
+
+**CONE 3
+[Cone:   ]^C^C_cone
+
+[Elliptic]_e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**COPY 3
+[Copy:   ]^C^C_copy
+
+
+
+[Multiple]_m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**CYLINDER 3
+[Cylindr:]^C^C_cylinder
+
+[Elliptic]_e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DDCHPROP 3
+[DDchprp:]^C^C_ddchprop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DDEDIT 3
+[DDedit: ]^C^C_ddedit
+
+[DDmodif:]^C^C_ddmodify
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMALIGNED 3
+[DimAlin:]^C^C_dimaligned
+
+[Text    ]_t
+[Angle   ]_a
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMANGULAR 3
+[DimAngl:]^C^C_dimangular
+
+[Text    ]_t
+[Angle   ]_a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMBASELINE 3
+[DimBase:]^C^C_dimbaseline
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMCENTER 3
+[DimCent:]^C^C_dimcenter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMCONTINUE 3
+[DimCont:]^C^C_dimcontinue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMDIAMETER 3
+[DimDiam:]^C^C_dimdiameter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMEDIT 3
+[DimEdit:]^C^C_dimedit
+
+[Home    ]_h
+[New     ]_n
+[Rotate  ]_r
+[Oblique ]_o
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMLINEAR 3
+[DimLinr:]^C^C_dimlinear
+
+[Horizont]_h
+[Vertical]_v
+
+[Text    ]_t
+[Angle   ]_a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMORDINATE 3
+[DimOrdin]^C^C_dimordinate
+
+[Xdatum  ]_x
+[Ydatum  ]_y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMOVERRIDE 3
+[DimOver:]^C^C_dimoverride
+
+[Clear   ]_c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMRADIUS 3
+[DimRads:]^C^C_dimradius
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMSTYLE 3
+[DimStyle]^C^C_dimstyle
+
+[Save    ]_s
+[Restore ]_r
+[STatus  ]_st
+[Vars    ]_v
+[Apply   ]_a
+[List?   ]?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIMTEDIT 3
+[DimTedit]^C^C_dimtedit
+
+[Left    ]_l
+[Right   ]_r
+[Home    ]_h
+[Angle   ]_a
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIST 3
+[Dist:   ]^C^C_dist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DIVIDE 3
+[Divide: ]^C^C_divide
+
+[Block   ]_b
+
+[Yes     ]_y
+[No      ]_n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DONUT 3
+[Donut:  ]^C^C_donut
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DRAGMODE 3
+[Dragmod:]'_dragmode
+
+[ON      ]_on
+[OFf     ]_off
+
+[Auto    ]_a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**DTEXT 3
+[Dtext:  ]^C^C_dtext
+[Mtext:  ]^C^C_mtext
+
+[Style   ]_s
+
+[Justify ]_j
+[Align   ]_a
+[Center  ]_c
+[Fit     ]_f
+[Middle  ]_m
+[Right   ]_r
+[Top Left]_tl
+[Top Cent]_tc
+[Top Rght]_tr
+[Mid Left]_ml
+[Mid Cent]_mc
+[Mid Rght]_mr
+[Bot Left]_bl
+[Bot Cent]_bc
+[Bot Rght]_br
+
+[Style:  ]^C^C_style
+**DVIEW 3
+[Dview:  ]^C^C_dview
+
+[Dviewblk]^C^C_dview ;
+
+[CAmera  ]_ca
+[TArget  ]_ta
+[Distance]_d
+[POints  ]_po
+[PAn     ]_pa
+[Zoom    ]_z
+[TWist   ]_tw
+[CLip    ]_cl
+[Hide    ]_h
+[OFf     ]_off
+[Undo    ]_u
+[eXit    ]_x
+
+[Back    ]_b
+[Front   ]_f
+
+[OFf     ]_of
+
+**DXFOUT 3
+[DXFout: ]^C^C_dxfout
+
+6
+16
+[Objects ]_o
+[Binary  ]_b
+
+
+[DXFin:  ]^C^C_dxfin
+[DXBin:  ]^C^C_dxbin
+
+
+
+
+
+
+
+
+
+
+
+
+**EDGESURF 3
+[EdgeSrf:]^C^C_edgesurf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ELEV 3
+[Elev:   ]'_elev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ELLIPSE 3
+[Ellipse:]^C^C_ellipse
+
+[Arc     ]_a
+[Center  ]_c
+[Rotation]_r
+
+
+
+
+[Pellips:]'_pellipse
+
+
+
+
+
+
+
+
+
+
+
+
+**ERASE 3
+[Erase:  ]^C^C_erase
+
+[Oops:   ]^C^C_oops
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**EXPLODE 3
+[Explode:]^C^C_explode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**EXTEND 3
+[Extend: ]^C^C_extend
+
+[Extend  ]_e
+[NoExtend]_n
+
+[Project ]_p
+[ None   ]_n
+[ UCS    ]_u
+[ View   ]_v
+
+[Undo    ]_u
+
+
+
+
+
+
+
+
+
+
+
+**EXTRUDE 3
+[Extrude:]^C^C_extrude
+
+[Path    ]_p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**FILL 3
+[Fill:   ]^C^C_fill
+
+[ON     ]_on
+[OFf    ]_of
+
+[Regen:  ]^C^C_regen
+[Regenal:]^C^C_regenall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**FILLET 3
+[Fillet: ]^C^C_fillet
+
+[Radius  ]_r
+[Radius 0]_r 0
+[Polyline]_p
+
+[Trim    ]_t
+[No Trim ]_n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**GRID 3
+[Grid:   ]'_grid
+[DDrmode:]'_ddrmodes
+
+[grd=snap]_snap
+[ON      ]_on
+[OFf     ]_of
+[Aspect  ]_a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**GROUP 3
+[Group:  ]^C^C_group
+
+?
+[Order   ]_o
+[Add     ]_a
+[Remove  ]_r
+[Select  ]_s
+[Make    ]_m
+
+[PickStl:]'_pickstyle
+
+
+
+
+
+
+
+
+
+
+
+
+**HATCH 3
+[Hatch:  ]^C^C_hatch
+
+[Bhatch: ]^C^C_bhatch
+
+[List?   ]?
+u
+u,o
+u,i
+[Yes     ]_y
+[No      ]_n
+
+
+
+
+
+
+
+
+
+
+
+
+**ID 3
+[ID:     ]'_id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**INSERT 3
+[Insert: ]^C^C_insert
+
+[DDinsert]^C^C_ddinsert
+
+[FileOpen]~
+[List?   ]?
+*
+[Corner  ]_c
+[XYZ     ]_xy
+[Drag    ]_d
+
+
+
+
+
+
+
+
+
+
+
+
+**INTERFERE 3
+[Intrfer:]^C^C_interfere
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**INTERSECT 3
+[Intrsct:]^C^C_intersect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ISOPLANE 3
+[Isoplan:]'_isoplane
+
+[Left    ]_l
+[Top     ]_t
+[Right   ]_r
+
+[DDrmode:]'_ddrmodes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**LAYER 3
+[Layer:  ]'_layer
+[DDlmode:]'_ddlmodes
+[List?   ]? *
+[Make    ]_m
+[Set     ]_s
+[New     ]_n
+[ON      ]_on
+[OFf     ]_of
+[Color   ]_c
+[LType   ]_lt
+[Freeze  ]_f
+[Thaw    ]_t
+[LOck    ]_lo
+[Unlock  ]_u
+
+[single ?]?^z
+[string *]*^z
+[alpha @ ]@^z
+[digit # ]#^z
+[nonalph.].^z
+[not ~   ]~^z
+
+**LEADER 3
+[Leader: ]^C^C_leader
+
+[Format  ]_f
+[Undo    ]_u
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**LENGTHEN 3
+[Lengthn:]^C^C_lengthen
+
+[DElta   ]_de
+[Percent ]_p
+[Total   ]_t
+[DYnamic ]_dy
+
+[Angle   ]_a
+[Length  ]_l
+[Undo    ]_u
+
+
+
+
+
+
+
+
+
+
+
+
+**LIMITS 3
+[Limits: ]^C^C_limits
+
+
+[LimChck:]'_limcheck
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**LINE 3
+[Line:   ]^C^C_line
+
+[1 Line: ]^C^C_line \\;
+
+[Continue];
+[Undo    ]_u
+[Close   ]_c
+@
+
+[ArcCont:]^C^C_arc ;
+
+
+
+
+
+
+
+
+
+
+
+
+**LINETYPE 3
+[Linetyp:]'_linetype
+
+[DDltype:]'_ddltype
+
+[List?   ]?
+[Create  ]_c
+[Load    ]_l
+[Set     ]_s
+[Yes     ]_y
+[No      ]_n
+*
+
+
+[Celtscl:]'_celtscale
+[Ltscale:]'_ltscale
+
+
+
+
+
+
+
+
+**LIST 3
+[List:   ]^C^C_list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**MASSPROP 3
+[Massprop]^C^C_massprop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**MEASURE 3
+[Measure:]^C^C_measure
+
+[Block   ]_b
+
+[Yes     ]_y
+[No      ]_n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**MINSERT 3
+[Minsert:]^C^C_minsert
+
+[DDmodif:]^C^C_ddmodify
+
+[List?   ]?
+[Corner  ]_c
+[XYZ     ]_xyz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**MIRROR 3
+[Mirror: ]^C^C_mirror
+
+[Mirro3d:]^C^C_mirror3d
+
+[Yes     ]_y
+[No      ]_n
+
+[Mirrtxt:]'_mirrtext
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**MIRROR3D 3
+[Mirro3D:]^C^C_mirror3d
+
+[Entity  ]_e
+[Z axis  ]_z
+[View    ]_v
+[XY      ]_xy
+[YZ      ]_yz
+[ZX      ]_zx
+[3 points]_3
+
+
+
+
+
+
+
+
+
+
+
+
+
+**MLINE 3
+[Mline:  ]^C^C_mline
+
+[Justif'n]_j
+[Scale   ]_s
+[STyle   ]_st
+
+[Undo    ]_u
+[Close   ]_c
+@
+
+[MLstyle:]^C^C_mlstyle
+
+
+
+
+
+
+
+
+
+
+
+**MOVE 3
+[Move:]^C^C_move
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**MTEXT 3
+[Mtext:  ]^C^C_mtext
+
+[Propert ]_p
+
+[Attach  ]_a
+[Rotate  ]_r
+[Style   ]_s
+
+[Width   ]_w
+[2Points ]_2p
+
+[Style:  ]^C^C_style
+
+
+
+
+
+
+
+
+
+
+**MVIEW 3
+[Mview:  ]^C^C_mview
+
+[ON      ]_on
+[OFf     ]_of
+[Hideplot]_h
+[Fit     ]_f
+2
+3
+4
+[Restore ]_r
+
+
+
+
+
+
+
+
+
+
+
+
+**OFFSET 3
+[Offset: ]^C^C_offset
+
+[Through ]_t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ORTHO 3
+[Ortho:  ]'_ortho
+
+[ON      ]_on
+[OFf     ]_of
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**OSNAP 3
+[Osnap:  ]'_osnap
+
+[DDosnap ]'_ddosnap
+
+[App Int ]_appint
+
+[CENter  ]_cen^z
+[ENDpoint]_endp^z
+[INSert  ]_ins^z
+[INTersec]_int^z
+[MIDpoint]_mid^z
+[NEArest ]_nea^z
+[NODe    ]_nod^z
+[PERpend ]_per^z
+[QUAdrant]_qua^z
+[TANgent ]_tan^z
+[NONE    ]_non^z
+[Quick,  ]_qui,^z
+
+[FROM    ]_from
+
+
+**PAN 3
+[Pan:    ]'_pan
+
+[Left:   ]'_pan ^P(trans (list (* 0.5 (getvar "viewsize")) 0) 0 1) ;^P
+[Right:  ]'_pan ^P(trans (list (* -0.5 (getvar "viewsize")) 0) 0 1) ;^P
+[Up:     ]'_pan ^P(trans (list 0 (* -0.5 (getvar "viewsize"))) 0 1) ;^P
+[Down:   ]'_pan ^P(trans (list 0 (* 0.5 (getvar "viewsize"))) 0 1) ;^P
+
+[Up/Left:]'_pan ^P(trans (list (* 0.5 (getvar "viewsize")) (* -0.6 (getvar "viewsize"))) 0 1) ;^P
+[Up/Rght:]'_pan ^P(trans (list (* -0.5 (getvar "viewsize")) (* -0.6 (getvar "viewsize"))) 0 1) ;^P
+[Dwn/Lft:]'_pan ^P(trans (list (* 0.5 (getvar "viewsize")) (* 0.6 (getvar "viewsize"))) 0 1) ;^P
+[Dwn/Rgt:]'_pan ^P(trans (list (* -0.5 (getvar "viewsize")) (* 0.6 (getvar "viewsize"))) 0 1) ;^P
+
+
+[Zoom:   ]'_zoom
+[DDview: ]^C^C_ddview
+
+
+
+
+
+
+
+**PEDIT 3
+[Pedit:  ]^C^C_pedit
+[Break   ]_b
+[Close   ]_c
+[De/Dow  ]_d
+[Ed Vertx]_e
+[Fit     ]_f
+[Go      ]_g
+[Insert  ]_i
+[Join    ]_j
+[LtypeGen]_l
+[Move/Opn]_m
+[Next/Opn]_n
+[Open    ]_o
+[Prev    ]_p
+[Regen/Rt]_r
+[REdispla]_re
+[Spln/Str]_s
+[Tan     ]_t
+[Undo/Up ]_u
+[Width   ]_w
+[eXit    ]_x
+[PolyVars]$I=image_poly $I=*
+
+**PLAN 3
+[Plan:   ]^C^C_plan
+
+[Current ]_c
+[UCS     ]_u
+[World   ]_w
+
+[Follow:]'_ucsfollow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**PLINE 3
+[Pline:  ]^C^C_pline
+
+[Arc     ]_a
+[Close   ]_c
+[Halfwid ]_h
+[Length  ]_l
+[Undo    ]_u
+[Width   ]_w
+
+[Angle   ]_a
+[Center  ]_ce
+[Close   ]_cl
+[Direct'n]_d \
+[Line    ]_l
+[Radius  ]_r
+[2nd PT  ]_s \
+
+[Pedit   ]^C^C_pedit
+
+
+
+
+**POINT 3
+[Point:  ]*^C^C_point
+
+[DDptype:]'_ddptype
+
+[Pdmode: ]'_pdmode
+[Pdsize: ]'_pdsize
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**POLYGON 3
+[Polygon:]^C^C_polygon
+
+[Edge    ]\_e
+
+[I-scribe]\\_i
+[C-scribe]\\_c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**PSFILL 3
+[PSfill: ]^C^C_psfill
+
+[List?   ]?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**PSOUT 3
+[PSout:  ]^C^C_psout
+
+[Display ]_d
+[Extents ]_e
+[Limits  ]_l
+[View    ]_v
+[Window  ]_w
+
+[None    ]_n
+[EPSI    ]_e
+[TIFF    ]_t
+128
+256
+512
+[inches  ]_i
+[mm      ]_m
+[fit     ]_f
+
+[PSprolog]'_psprolog 
+[Psdrag  ]'_psdrag
+[PSqualit]'_psquality
+
+**PURGE 3
+[Purge:  ]^C^C_purge
+
+[Blocks  ]_b
+[Dimstyle]_d
+[LAyers  ]_la
+[LTypes  ]_lt
+[SHapes  ]_sh
+[STyles  ]_st
+[All     ]_a
+
+[Yes     ]_y
+[No      ]_n
+
+
+
+
+
+
+
+
+
+
+**RAY 3
+[Ray:    ]^C^C_ray
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**RECTANG 3
+[Rectang:]^C^C_rectang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**RENAME 3
+[Rename: ]^C^C_rename
+
+[DDrenam:]^C^C_ddrename
+
+[Block   ]_b
+[Dimstyle]_d
+[LAyer   ]_la
+[LType   ]_lt
+[Style   ]_s
+[UCS     ]_u
+[VIew    ]_vi
+[VPort   ]_vp
+
+
+
+
+
+
+
+
+
+
+**REVOLVE 3
+[Revolve:]^C^C_revolve
+
+[Object  ]_o
+[X-axis  ]_x
+[Y-axis  ]_y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**REVSURF 3
+[Revsurf:]^C^C_revsurf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ROTATE 3
+[Rotate: ]^C^C_rotate
+
+[Referenc]_r
+
+[Rotat3D:]^C^C_rotate3d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ROTATE3D 3
+[Rotat3d:]^C^C_rotate3d
+
+[Entity  ]_e
+[Last    ]_l
+[View    ]_v
+[X axis  ]_x
+[Y axis  ]_y
+[Z axis  ]_z
+[2 points]_2p
+
+
+
+
+
+
+
+
+
+
+
+
+
+**RULESURF 3
+[Rulesrf:]^C^C_rulesurf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**ARX 3
+[Arx:    ]^C^C_arx
+
+[Load    ]_l
+[PopCmds ]_p
+[Unload  ]_u
+[List?   ]?
+
+[Classes ]_cl
+[Commands]_c
+[Objects ]_o
+[Programs]_p
+[Services]_s
+
+
+
+
+
+
+
+
+
+
+**SCALE 3
+[Scale:  ]^C^C_scale
+
+[Referenc]_r
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SECTION 3
+[Section:]^C^C_section
+
+[Object  ]_o
+[Zaxis   ]_z
+[View    ]_v
+[XY      ]_xy
+[YZ      ]_yz
+[ZX      ]_zx
+[3Point  ]_3p
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SELECT 3
+[Select: ]^C^C_select
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SETVAR 3
+[Setvar: ]'_setvar
+
+[List?   ]?
+*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SHADE 3
+[Shade:  ]^C^C_shade
+
+[Shadedge]
+[ 256-col]'_shadedge 0
+[ 256-edg]'_shadedge 1
+[ Hidden ]'_shadedge 2
+[ Filled ]'_shadedge 3
+
+[Shadedif]'_shadedif
+
+[Regen:  ]^C^C_regen
+
+
+
+
+
+
+
+
+
+
+
+**SHAPE 3
+[Shape:  ]^C^C_shape
+
+[List?   ]?
+
+[Load:   ]^C^C_load
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SKETCH 3
+[Sketch: ]^C^C_sketch
+
+[Connect ]c
+[Erase   ]e
+[Record  ]r
+
+[eXit    ]x
+[Quit    ]q
+
+[SkpolOn:]'_skpoly 1
+[SkpolOf:]'_skpoly 0
+
+
+
+
+
+
+
+
+
+
+
+**SLICE 3
+[Slice:  ]^C^C_slice
+
+[Object  ]_o
+[Zaxis   ]_z
+[View    ]_v
+[XY      ]_xy
+[YZ      ]_yz
+[ZX      ]_zx
+[3Point  ]_3p
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SNAP 3
+[Snap:   ]'_snap
+[DDrmode:]'_ddrmodes
+
+[ON      ]_on
+[OFf     ]_of
+[Aspect  ]_a
+[Rotate  ]_r
+
+[Style   ]_s
+[ Iso    ]_i
+[ Standrd]_s
+
+[Toggle  ]^b
+
+
+
+
+
+
+
+
+
+**SOLID 3
+[Solid:  ]^C^C_solid
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SPHERE 3
+[Sphere: ]^C^C_sphere
+
+[Diameter]_d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**SPLINE 3
+[Spline: ]^C^C_spline
+
+[Object  ]_o
+
+[Close   ]_c
+[Fit Tol ]_f
+
+[SplFrame]'_splframe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**STRETCH 3
+[Stretch:]^C^C_stretch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**STYLE 3
+[Style:  ]'_style
+
+
+[List?   ]?
+
+[Yes     ]_y
+[No      ]_n
+
+[Mtext:  ]^C^C_mtext
+[Dtext:  ]^C^C_dtext
+
+
+
+
+
+
+
+
+
+
+
+
+**SUBTRACT 3
+[Subtract]^C^C_subtract
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**TABLET 3
+[Tablet: ]^C^C_tablet
+
+[Calibrat]_cal
+[Config  ]_cfg 4 \\\25 9 \\\11 9 \\\9 13 \\\25 7 _y \\
+[Re-Cfg  ]_cfg 4 _y \\\;;\\\;;\\\;;\\\;;_y \\
+[Re-DfCfg]_cfg 4 _y \\\25 9 \\\11 9 \\\9 13 \\\25 7 _y \\
+
+[ON      ]_on
+[OFf     ]_of
+[Yes     ]_y
+[No      ]_n
+
+[Orthognl]_o
+[Affine  ]_a
+[Projectv]_p
+
+
+
+
+
+
+
+**TABSURF 3
+[Tabsurf:]^C^C_tabsurf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**TEXT 3
+[Text:   ]^C^C_text
+[Mtext:  ]^C^C_mtext
+
+[Style   ]_s
+
+[Justify ]_j
+[Align   ]_a
+[Center  ]_c
+[Fit     ]_f
+[Middle  ]_m
+[Right   ]_r
+[Top Left]_tl
+[Top Cent]_tc
+[Top Rght]_tr
+[Mid Left]_ml
+[Mid Cent]_mc
+[Mid Rght]_mr
+[Bot Left]_bl
+[Bot Cent]_bc
+[Bot Rght]_br
+[Style:  ]^C^C_style
+
+**TORUS 3
+[Torus:  ]^C^C_torus
+
+[Diameter]_d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**TRIM 3
+[Trim:   ]^C^C_trim
+
+[Extend  ]_e
+[NoExtend]_n
+
+[Project ]_p
+[ True 3D]_n
+[ UCS    ]_u
+[ View   ]_v
+
+[Undo    ]_u
+
+
+
+
+
+
+
+
+
+
+
+**UCS 3
+[UCS:    ]^C^C_ucs
+
+[Origin  ]_o
+[Zaxis   ]_z
+[3Point  ]_3p
+[X       ]_x
+[Y       ]_y
+[Z       ]_z
+[Entity  ]_e
+[View    ]_v
+[Previous]_p
+[Restore ]_r
+[Save    ]_s
+[Delete  ]_d
+[List?   ]?
+[World   ]_w
+
+[DDucs:  ]^C^C_dducs
+[DDucsp: ]^C^C_dducsp
+[Follow: ]'_ucsfollow
+[Ucsicon:]^C^C_ucsicon
+
+**UCSICON 3
+[Ucsicon:]^C^C_ucsicon
+
+[ON      ]_on
+[OFf     ]_of
+
+[All     ]_all
+[Origin  ]_o
+[NoOrigin]_n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**UNDO 3
+[UNDO:  ]^C^C_undo
+
+[Back 1:]^C^C_undo 1
+
+[Auto   ]_a
+[Back   ]_b
+[End    ]_e
+[Group  ]_g
+[Mark   ]_m
+[Control]_c
+
+[Yes    ]_y
+[No     ]_n
+
+[Redo:  ]^C^C_redo
+
+
+
+
+
+
+
+**UNION 3
+[Union:]^C^C_union
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**VIEW 3
+[View:   ]'_view
+
+[List?   ]_?
+[Delete  ]_d
+[Restore ]_r
+[Save    ]_s
+[Window  ]_w
+
+
+[Pan:    ]'_pan
+[Zoom:   ]'_zoom
+
+[DDview: ]^C^C_ddview
+[Plan:   ]^C^C_plan
+[Dview:  ]^C^C_dview
+
+
+
+
+
+
+
+**VIEWPORTS 3
+[Vports:]^C^C_vports
+[DDvport:]^C^C^P(ai_tiledvp_chk nil) ^P
+
+[Save    ]_s
+[Restore ]_r
+[Delete  ]_d
+[Join    ]_j
+[Single  ]_s
+?
+2
+3
+4
+
+[Horizo'l]_h
+[Vertical]_v
+[Above   ]_a
+[Below   ]_b
+[Left    ]_l
+[Right   ]_r
+
+
+
+**VIEWRES 3
+[Viewres:]^C^C_viewres
+
+[No      ]_n
+[Yes     ]_y
+
+1
+2
+5
+10
+20
+50
+100
+200
+500
+1000
+2000
+5000
+10000
+20000
+
+[RegnAuto]'_regenauto
+
+**VPLAYER 3
+[Vplayer:]^C^C_vplayer
+
+?
+[Freeze  ]_f
+[Thaw    ]_t
+[Reset   ]_r
+[Newfrz  ]_n
+[Vpvsdflt]_v
+
+
+[All     ]_all
+[Select  ]_s
+[Current ]_c
+
+
+
+
+
+
+
+
+
+**VPOINT 3
+[Vpoint: ]^C^C_vpoint
+
+[Rotate  ]_r
+[Axes    ] ;
+[Vector  ]
+
+[Top     ]_non *0,0,1
+[Front   ]_non *0,-1,0
+[Left    ]_non *-1,0,0
+[Right   ]_non *1,0,0
+[Back    ]_non *0,1,0
+
+[Iso SW  ]_non *-1,-1,1
+[Iso SE  ]_non *1,-1,1
+[Iso NE  ]_non *1,1,1
+[Iso NW  ]_non *-1,1,1
+
+[DDvpoint]^C^C_ddvpoint
+[DDview: ]^C^C_ddview
+[Plan:   ]^C^C_plan
+[Dview:  ]^C^C_dview
+
+**VPORTS 3
+[Vports: ]^C^C_vports
+[DDvport:]^C^C^P(ai_tiledvp_chk nil) ^P
+
+[Save    ]_s
+[Restore ]_r
+[Delete  ]_d
+[Join    ]_j
+[Single  ]_s
+?
+2
+3
+4
+
+[Horizo'l]_h
+[Vertical]_v
+[Above   ]_a
+[Below   ]_b
+[Left    ]_l
+[Right   ]_r
+
+
+
+**VSLIDE 3
+[Vslide: ]^C^C_vslide
+
+[Redraw: ]'_redraw
+
+[Mslide: ]^C^C_mslide
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**WBLOCK 3
+[Wblock: ]^C^C_wblock
+
+=
+*
+
+
+[Base:   ]^C^C_base
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**WEDGE 3
+[Wedge:  ]^C^C_wedge
+
+[Center  ]_ce
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**XBIND 3
+[Xbind:  ]^C^C_xbind
+
+[Block   ]_b
+[Dim Styl]_d
+[LAyer   ]_la
+[LType   ]_lt
+[Txt Styl]_s
+
+[Xref:   ]^C^C_xref
+
+
+
+
+
+
+
+
+
+
+
+
+
+**XLINE 3
+[Xline: ]^C^C_xline
+
+[Horizo'l]_h
+[Vertical]_v
+[Angle   ]_a
+[Bisect  ]_b
+[Offset  ]_o
+
+
+[Ray:    ]^C^C_ray
+
+
+
+
+
+
+
+
+
+
+
+
+**XREF 3
+[Xref:   ]^C^C_xref
+
+[List?   ]?
+[Bind    ]_b
+[Detach  ]_d
+[Path    ]_p
+[Reload  ]_r
+[Overlay ]_o
+[Attach  ]_a
+
+[Visretn:]'_visretain
+[XrefCtl:]'_xrefctl
+
+
+
+
+
+
+
+
+
+
+**ZOOM 3
+[Zoom:   ]'_zoom
+
+[All     ]_a
+[Center  ]_c
+[Dynamic ]_d
+[Extents ]_e
+[Left    ]_l
+[Previous]_p
+[Vmax    ]_v
+[Window  ]_w
+
+[Yes     ]_y
+[No      ]_n
+
+[In      ]2x
+[Out     ].5x
+[Limits  ]^P(getvar "limmin") (getvar "limmax") ^P
+
+
+
+
+
+**ENDSCREEN
+
+//
+//      Begin AutoCAD Tablet Menus
+//
+//      This is the TABLET1 menu.  You may put your own 
+//      macros and menu items here in these spaces.
+//      All of the "blank" line items actually contain one
+//      space so that a RETURN is issued when you pick any
+//      of them from the tablet.  Remove them if you want nothing
+//      to happen when they are selected, or place your own
+//      macros in their place.
+
+***TABLET1
+**TABLET1STD
+[A-1]
+[A-2]
+[A-3]
+[A-4]
+[A-5]
+[A-6]
+[A-7]
+[A-8]
+[A-9]
+[A-10]
+[A-11]
+[A-12]
+[A-13]
+[A-14]
+[A-15]
+[A-16]
+[A-17]
+[A-18]
+[A-19]
+[A-20]
+[A-21]
+[A-22]
+[A-23]
+[A-24]
+[A-25]
+[B-1]
+[B-2]
+[B-3]
+[B-4]
+[B-5]
+[B-6]
+[B-7]
+[B-8]
+[B-9]
+[B-10]
+[B-11]
+[B-12]
+[B-13]
+[B-14]
+[B-15]
+[B-16]
+[B-17]
+[B-18]
+[B-19]
+[B-20]
+[B-21]
+[B-22]
+[B-23]
+[B-24]
+[B-25]
+[C-1]
+[C-2]
+[C-3]
+[C-4]
+[C-5]
+[C-6]
+[C-7]
+[C-8]
+[C-9]
+[C-10]
+[C-11]
+[C-12]
+[C-13]
+[C-14]
+[C-15]
+[C-16]
+[C-17]
+[C-18]
+[C-19]
+[C-20]
+[C-21]
+[C-22]
+[C-23]
+[C-24]
+[C-25]
+[D-1]
+[D-2]
+[D-3]
+[D-4]
+[D-5]
+[D-6]
+[D-7]
+[D-8]
+[D-9]
+[D-10]
+[D-11]
+[D-12]
+[D-13]
+[D-14]
+[D-15]
+[D-16]
+[D-17]
+[D-18]
+[D-19]
+[D-20]
+[D-21]
+[D-22]
+[D-23]
+[D-24]
+[D-25]
+[E-1]
+[E-2]
+[E-3]
+[E-4]
+[E-5]
+[E-6]
+[E-7]
+[E-8]
+[E-9]
+[E-10]
+[E-11]
+[E-12]
+[E-13]
+[E-14]
+[E-15]
+[E-16]
+[E-17]
+[E-18]
+[E-19]
+[E-20]
+[E-21]
+[E-22]
+[E-23]
+[E-24]
+[E-25]
+[F-1]
+[F-2]
+[F-3]
+[F-4]
+[F-5]
+[F-6]
+[F-7]
+[F-8]
+[F-9]
+[F-10]
+[F-11]
+[F-12]
+[F-13]
+[F-14]
+[F-15]
+[F-16]
+[F-17]
+[F-18]
+[F-19]
+[F-20]
+[F-21]
+[F-22]
+[F-23]
+[F-24]
+[F-25]
+[G-1]
+[G-2]
+[G-3]
+[G-4]
+[G-5]
+[G-6]
+[G-7]
+[G-8]
+[G-9]
+[G-10]
+[G-11]
+[G-12]
+[G-13]
+[G-14]
+[G-15]
+[G-16]
+[G-17]
+[G-18]
+[G-19]
+[G-20]
+[G-21]
+[G-22]
+[G-23]
+[G-24]
+[G-25]
+[H-1]
+[H-2]
+[H-3]
+[H-4]
+[H-5]
+[H-6]
+[H-7]
+[H-8]
+[H-9]
+[H-10]
+[H-11]
+[H-12]
+[H-13]
+[H-14]
+[H-15]
+[H-16]
+[H-17]
+[H-18]
+[H-19]
+[H-20]
+[H-21]
+[H-22]
+[H-23]
+[H-24]
+[H-25]
+[I-1]
+[I-2]
+[I-3]
+[I-4]
+[I-5]
+[I-6]
+[I-7]
+[I-8]
+[I-9]
+[I-10]
+[I-11]
+[I-12]
+[I-13]
+[I-14]
+[I-15]
+[I-16]
+[I-17]
+[I-18]
+[I-19]
+[I-20]
+[I-21]
+[I-22]
+[I-23]
+[I-24]
+[I-25]
+**ENDTAB1
+
+//      This is the alternate TABLET1 menu.
+
+**TABLET1ALT
+[A-1]
+[A-2]
+[A-3]
+[A-4]
+[A-5]
+[A-6]
+[A-7]
+[A-8]
+[A-9]
+[A-10]
+[A-11]
+[A-12]
+[A-13]
+[A-14]
+[A-15]
+[A-16]
+[A-17]
+[A-18]
+[A-19]
+[A-20]
+[A-21]
+[A-22]
+[A-23]
+[A-24]
+[A-25]
+[B-1]
+[B-2]
+[B-3]
+[B-4]
+[B-5]
+[B-6]
+[B-7]
+[B-8]
+[B-9]
+[B-10]
+[B-11]
+[B-12]
+[B-13]
+[B-14]
+[B-15]
+[B-16]
+[B-17]
+[B-18]
+[B-19]
+[B-20]
+[B-21]
+[B-22]
+[B-23]
+[B-24]
+[B-25]
+[C-1]
+[C-2]
+[C-3]
+[C-4]
+[C-5]
+[C-6]
+[C-7]
+[C-8]
+[C-9]
+[C-10]
+[C-11]
+[C-12]
+[C-13]
+[C-14]
+[C-15]
+[C-16]
+[C-17]
+[C-18]
+[C-19]
+[C-20]
+[C-21]
+[C-22]
+[C-23]
+[C-24]
+[C-25]
+[D-1]
+[D-2]
+[D-3]
+[D-4]
+[D-5]
+[D-6]
+[D-7]
+[D-8]
+[D-9]
+[D-10]
+[D-11]
+[D-12]
+[D-13]
+[D-14]
+[D-15]
+[D-16]
+[D-17]
+[D-18]
+[D-19]
+[D-20]
+[D-21]
+[D-22]
+[D-23]
+[D-24]
+[D-25]
+[E-1]
+[E-2]
+[E-3]
+[E-4]
+[E-5]
+[E-6]
+[E-7]
+[E-8]
+[E-9]
+[E-10]
+[E-11]
+[E-12]
+[E-13]
+[E-14]
+[E-15]
+[E-16]
+[E-17]
+[E-18]
+[E-19]
+[E-20]
+[E-21]
+[E-22]
+[E-23]
+[E-24]
+[E-25]
+[F-1]
+[F-2]
+[F-3]
+[F-4]
+[F-5]
+[F-6]
+[F-7]
+[F-8]
+[F-9]
+[F-10]
+[F-11]
+[F-12]
+[F-13]
+[F-14]
+[F-15]
+[F-16]
+[F-17]
+[F-18]
+[F-19]
+[F-20]
+[F-21]
+[F-22]
+[F-23]
+[F-24]
+[F-25]
+[G-1]
+[G-2]
+[G-3]
+[G-4]
+[G-5]
+[G-6]
+[G-7]
+[G-8]
+[G-9]
+[G-10]
+[G-11]
+[G-12]
+[G-13]
+[G-14]
+[G-15]
+[G-16]
+[G-17]
+[G-18]
+[G-19]
+[G-20]
+[G-21]
+[G-22]
+[G-23]
+[G-24]
+[G-25]
+[H-1]
+[H-2]
+[H-3]
+[H-4]
+[H-5]
+[H-6]
+[H-7]
+[H-8]
+[H-9]
+[H-10]
+[H-11]
+[H-12]
+[H-13]
+[H-14]
+[H-15]
+[H-16]
+[H-17]
+[H-18]
+[H-19]
+[H-20]
+[H-21]
+[H-22]
+[H-23]
+[H-24]
+[H-25]
+[I-1]
+[I-2]
+[I-3]
+[I-4]
+[I-5]
+[I-6]
+[I-7]
+[I-8]
+[I-9]
+[I-10]
+[I-11]
+[I-12]
+[I-13]
+[I-14]
+[I-15]
+[I-16]
+[I-17]
+[I-18]
+[I-19]
+[I-20]
+[I-21]
+[I-22]
+[I-23]
+[I-24]
+[I-25]
+**ENDTAB1A
+
+
+//      This is the default TABLET2 menu.  It has been
+//      updated for Release 13 functionality.  Where allowed,
+//      commands are invoked transparently.
+
+***TABLET2
+**TABLET2STD
+^C^C_ddvpoint
+'_ddview
+^C^C_dview
+^C^C_ucs _w
+^C^C_dducs
+;
+^C^C_cone
+^C^C_region
+^C^C_mline
+^C^C_line
+^C^C_regen
+^C^C_vpoint;;
+^C^C_plan;;
+^C^C_dview;;_off _x
+^C^C_ucs _p
+^C^C_dducsp
+;
+^C^C_sphere
+^C^C_extrude
+^C^C_spline
+^C^C_pline
+^C^C_regenall
+^C^C_render
+^C^C_scene
+'_layer
+'_ddlmodes
+'_ddlmodes
+;
+^C^C_cylinder
+^C^C_revolve
+^C^C_ray
+^C^C_xline
+'_redraw
+^C^C_matlib
+^C^C_light
+'_layer _on
+'_layer _t
+_vplayer _t
+;
+^C^C_box
+^C^C_rulesurf
+^C^C_arc
+^C^C_circle
+'_redraw
+^C^C_hide
+^C^C^P(setq ai_se (getvar "SHADEDGE"));_SHADEDGE;2;_SHADE;+
+(setvar "SHADEDGE" ai_se)(setq ai_se nil)(princ) ^P
+'_layer _off
+'_layer _f
+_vplayer _f
+;
+^C^C_wedge
+^C^C_revsurf
+^C^C_polygon
+^C^C_ellipse
+'_redraw
+^C^C_rpref
+^C^C_shade
+'_layer _lo
+'_layer _u
+^C^C_vplayer
+;
+^C^C_torus
+^C^C_edgesurf
+^C^C_donut
+*^C^C_point
+'_redraw
+^C^C_massprop
+'_cal
+^C^C_mview _off
+^C^C_mview _on
+^C^C_mview
+;
+$S=DR
+^C^C_tabsurf
+^C^C_3dface
+^C^C_3dpoly
+'_redraw
+'_id
+^C^C_list
+^C^C_mview _4
+^C^C_mview _3
+^C^C_mview _2
+;
+'_zoom _d
+^C^C_zoom _a
+'_zoom 2x
+'_pan
+'_redrawall
+^C^C_area
+'_dist
+^P(ai_tiledvp_chk nil) ^P
+^C^C_mview _r
+^C^C_vports
+;
+'_zoom _p
+^C^C_zoom _e
+'_zoom .5x
+'_zoom
+'_redrawall
+**ENDTAB2
+
+//      This is the alternate TABLET2 menu.  All selections issue
+//      Cancels (^C^C) prior to the command.
+
+**TABLET2ALT
+^C^C_ddvpoint
+^C^C_ddview
+^C^C_dview
+^C^C_ucs _w
+^C^C_dducs
+;
+^C^C_cone
+^C^C_region
+^C^C_mline
+^C^C_line
+^C^C_regen
+^C^C_vpoint;;
+^C^C_plan;;
+^C^C_dview;;_off _x
+^C^C_ucs _p
+^C^C_dducsp
+;
+^C^C_sphere
+^C^C_extrude
+^C^C_spline
+^C^C_pline
+^C^C_regenall
+^C^C_render
+^C^C_scene
+^C^C_layer
+^C^C_ddlmodes
+^C^C_ddlmodes
+;
+^C^C_cylinder
+^C^C_revolve
+^C^C_ray
+^C^C_xline
+^C^C_redraw
+^C^C_matlib
+^C^C_light
+^C^C_layer _on
+^C^C_layer _t
+^C^C_vplayer _t
+;
+^C^C_box
+^C^C_rulesurf
+^C^C_arc
+^C^C_circle
+^C^C_redraw
+^C^C_hide
+^C^C^P(setq ai_se (getvar "SHADEDGE"));_SHADEDGE;2;_SHADE;+
+(setvar "SHADEDGE" ai_se)(setq ai_se nil)(princ) ^P
+^C^C_layer _off
+^C^C_layer _f
+^C^C_vplayer _f
+;
+^C^C_wedge
+^C^C_revsurf
+^C^C_polygon
+^C^C_ellipse
+^C^C_redraw
+^C^C_rpref
+^C^C_shade
+^C^C_layer _lo
+^C^C_layer _u
+^C^C_vplayer
+;
+^C^C_torus
+^C^C_edgesurf
+^C^C_donut
+*^C^C_point
+^C^C_redraw
+^C^C_massprop
+^C^C_cal
+^C^C_mview _off
+^C^C_mview _on
+^C^C_mview
+;
+$S=DR
+^C^C_tabsurf
+^C^C_3dface
+^C^C_3dpoly
+^C^C_redraw
+^C^C_id
+^C^C_list
+^C^C_mview _4
+^C^C_mview _3
+^C^C_mview _2
+;
+^C^C_zoom _d
+^C^C_zoom _a
+^C^C_zoom 2x
+^C^C_pan
+^C^C_redrawall
+^C^C_area
+^C^C_dist
+^P(ai_tiledvp_chk nil) ^P
+^C^C_mview _r
+^C^C_vports
+;
+^C^C_zoom _p
+^C^C_zoom _e
+^C^C_zoom .5x
+^C^C_zoom
+^C^C_redrawall
+**ENDTAB2A
+
+//      This is the default TABLET3 menu.  It has been
+//      updated for Release 13 functionality.  It provides
+//      Imperial unit input.
+
+***TABLET3
+**TABLET3STD
+;
+;
+;
+<<135
+<<135
+<<90
+<<90
+<<45
+<<45
+;
+;
+;
+<<180
+<<180
+<\
+<\
+<<0
+<<0
+;
+;
+;
+<<225
+<<225
+<<270
+<<270
+<<315
+<<315
+;
+;
+;
+^H
+^H
+^H
+^H
+^H
+^H
+;
+;
+;
+7/8\
+7/8\
+/16\
+/16\
+/32\
+/32\
+;
+;
+;
+1/2\
+1/2\
+5/8\
+5/8\
+3/4\
+3/4\
+;
+;
+;
+1/8\
+1/8\
+1/4\
+1/4\
+3/8\
+3/8\
+;
+;
+;
+-\
+-\
+/\
+/\
+X\
+X\
+;
+;
+;
+@\
+@\
+'\
+'\
+"\
+"\
+;
+;
+;
+7\
+7\
+8\
+8\
+9\
+9\
+;
+;
+;
+4\
+4\
+5\
+5\
+6\
+6\
+;
+;
+;
+1\
+1\
+2\
+2\
+3\
+3\
+;
+;
+;
+0\
+0\
+.\
+.\
+,\
+,\
+**ENDTAB3
+
+//      This is the alternate TABLET3 menu.  It provides
+//      Metric unit input.
+
+**TABLET3ALT
+;
+;
+;
+<<135
+<<135
+<<90
+<<90
+<<45
+<<45
+;
+;
+;
+<<180
+<<180
+<\
+<\
+<<0
+<<0
+;
+;
+;
+<<225
+<<225
+<<270
+<<270
+<<315
+<<315
+;
+;
+;
+^H
+^H
+^H
+^H
+^H
+^H
+;
+;
+;
+m\
+m\
+cm\
+cm\
+mm\
+mm\
+;
+;
+;
+.\
+.\
++\
++\
+%%p\
+%%p\
+;
+;
+;
+,\
+,\
+%%d\
+%%d\
+%%c\
+%%c\
+;
+;
+;
+-\
+-\
+/\
+/\
+X\
+X\
+;
+;
+;
+@\
+@\
+'\
+'\
+"\
+"\
+;
+;
+;
+7\
+7\
+8\
+8\
+9\
+9\
+;
+;
+;
+4\
+4\
+5\
+5\
+6\
+6\
+;
+;
+;
+1\
+1\
+2\
+2\
+3\
+3\
+;
+;
+;
+0\
+0\
+00\
+00\
+000\
+000\
+**ENDTAB3A
+
+
+//      This is the default TABLET4 menu.  It has been
+//      updated for Release 13 functionality.
+//
+//      Menu items S19 - S22 contain the calls to swap the tablet menus.
+//
+//      These items cause tablet menus to be swapped which contain
+//      various "expert" menu selections.  A variable is used to
+//      hold bit-coded values which are on when the menu is swapped,
+//      i.e., when the alternate menu has been swapped in.  Bit 1
+//      is on when menu area 1 is swapped, bit 2 when menu area 2
+//      is swapped, and so on with bits 4 and 8.  Prompts describing 
+//      the changes enacted via the menu provide feedback to the user.
+//
+//      The prompts are tied to the setting of the EXPERT system
+//      variable.  If the value of the EXPERT system variable is 0,
+//      then a prompt such as this will be issued;
+//      "Menu area 3 has been swapped.  Optional metric
+//      functionality is now active."  If the value of the EXPERT
+//      system variable is 1-4, the prompt will be shortened to;
+//      "Menu area 3 has been swapped.", and if the value of
+//      the EXPERT system variable is greater than 4, all prompts
+//      will be suppressed.
+//
+//      Selecting the AutoCAD heading at the top of the screen
+//      menu resets all of the menus to their default values, as
+//      does opening a (new) drawing.
+//
+
+***TABLET4
+**TABLET4STD
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+[Tablet 1]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab1) ^P
+[Tablet 2]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab2) ^P
+[Tablet 3]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab3) ^P
+[Tablet 4]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab4) ^P
+;
+;
+;
+^C^C_dtext _a
+^C^C_dtext _m
+^C^C_dtext _f
+^C^C_spell
+^C^C_mtext
+;
+'_?
+'_?
+^C^C^C
+^C^C^C
+;
+_none
+_center
+_endpoint
+_ins
+_int
+_midpoint
+_nearest
+_node
+_perpend
+_quadrant
+_tangent
+;
+^C^C_qsave
+^C^C_saveas
+^C^C_dtext _bl
+^C^C_dtext _c
+^C^C_dtext _r
+'_style
+^C^C_ddedit
+;
+_u
+_u
+^C^C_redo
+^C^C_redo
+;
+_appint
+_from
+_fence
+_cp
+_wp
+_window
+_last
+_previous
+_crossing
+_remove
+_add
+;
+^C^C_new
+^C^C_open
+^C^C_tolerance
+^C^C_dimstyle _r
+^C^C_dimstyle _s
+^C^C_ddim
+^C^C_ddim
+;
+^C^C_erase
+^C^C_erase
+^C^C_ddmodify
+^C^C_ddmodify
+;
+^C^C_group
+^C^C_pspace
+^C^C_mspace
+^O
+^D
+^Q
+'_graphscr
+^E
+^G
+^B
+^V
+;
+^C^C_files
+^C^C_appload
+^C^C_dimcenter
+^C^C_dimedit _o
+^C^C_dimtedit \_a
+^C^C_dimtedit
+^C^C_dimtedit \_h
+;
+^C^C_ddattdef
+^C^C_wblock
+^C^C_block
+^C^C_ddinsert
+;
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_scale,^C^C_scale)
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_rotate,^C^C_rotate)
+^C^C_offset
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_move,^C^C_move)
+^C^C_bhatch
+^C^C_hatchedit
+^C^C_splinedit
+^C^C_pedit
+^C^C_xplode
+^C^C_array
+^C^C_divide
+;
+^C^C_plot
+^C^C_psout
+^C^C_leader
+^C^C_dimbaseline
+^C^C_dimcontinue
+^C^C_dimlinear
+^C^C_dimlinear
+;
+^C^C_ddatte
+^C^C_xref _o
+^C^C_xref _a
+^C^C_xref
+;
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_mirror,^C^C_mirror)
+^C^C_break \_f \@
+^C^C_break \_f
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_copy,^C^C_copy)
+^C^C_extend
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_stretch,^C^C_stretch)
+^C^C_trim
+^C^C_fillet _r 0;;
+^C^C_fillet
+^C^C_chamfer
+^C^C_measure
+;
+^C^C_quit
+^C^C^P(if R13omn (progn(command "_Menu" R13omn)(setq R13omn nil));+
+(if (setq R13omn (getvar "menuname"));+
+(if (setq envname (getenv "ACADALTMENU")) (command "_Menu" +
+(findfile envname)) (command "_Menu" R13omn))))(setq T_MENU nil)(princ) ^P
+^C^C_dimradius
+^C^C_dimdiameter
+^C^C_dimangular
+^C^C_dimordinate
+^C^C_dimaligned
+;
+^C^C_ddunits
+'_ddltype
+'_ddemodes
+^C^C_ddrmodes
+;
+^C^C_intersect
+^C^C_union
+^C^C_subtract
+^C^C_interfere
+^C^C_section
+^C^C_slice
+^C^C_lengthen
+^C^C_align
+^C^C_rotate3d
+^C^C_mirror3d
+^C^C^P(ai_onoff "QTEXTMODE") ^P
+;
+^C^C_shell
+^C^C_shell
+**ENDTAB4
+
+//      This is an alternate TABLET4 menu which contains the following
+//      changes to the base functionality contained in the original
+//      menu:
+//
+//      1)  All commands repeat which make sense to repeat
+//      2)  The Osnap override picks now change the running "osmode"
+//          transparently via '_OSMODE.
+//      3)  The DTEXT command is replaced with the TEXT command.
+//      4)  The ARRAY command is replaced with the 3DARRAY command.
+//
+//      Menu items S19 - S22 contain the calls to swap the tablet menus.
+//
+//      These items cause tablet menus to be swapped which contain
+//      various "expert" menu selections.  A variable is used to
+//      hold bit-coded values which are on when the menu is swapped,
+//      i.e., when the alternate menu has been swapped in.  Bit 1
+//      is on when menu area 1 is swapped, bit 2 when menu area 2
+//      is swapped, and so on with bits 4 and 8.  Prompts describing 
+//      the changes enacted via the menu provide feedback to the user.
+//
+//      The prompts are tied to the setting of the EXPERT system
+//      variable.  If the value of the EXPERT system variable is 0,
+//      then a prompt such as this will be issued;
+//      "Menu area 3 has been swapped.  Optional metric
+//      functionality is now active."  If the value of the EXPERT
+//      system variable is 1-4, the prompt will be shortened to;
+//      "Menu area 3 has been swapped.", and if the value of
+//      the EXPERT system variable is greater than 4, all prompts
+//      will be suppressed.
+//
+//      Selecting the AutoCAD heading at the top of the screen
+//      menu resets all of the menus to their default values, as
+//      does opening a (new) drawing.
+
+**TABLET4ALT
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+[Tablet 1]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab1) ^P
+[Tablet 2]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab2) ^P
+[Tablet 3]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab3) ^P
+[Tablet 4]^P$M=$(if,$(or,$(eq,$(getvar,CMDNAMES),TEXT),+
+$(eq,$(getvar,CMDNAMES),DTEXT),$(eq,$(getvar,CMDNAMES),ATTDEF),+
+$(eq,$(getvar,CMDNAMES),MTEXT)),^C^C,^Z)(ai_tab4) ^P
+;
+;
+;
+*^C^C_text _a
+*^C^C_text _m
+*^C^C_text _f
+^C^C_spell
+*^C^C_mtext
+;
+'_?
+'_?
+^C^C^C
+^C^C^C
+;
+'_osmode 0
+'_osmode 4
+'_osmode 1
+'_osmode 64
+'_osmode 32
+'_osmode 2
+'_osmode 512
+'_osmode 8
+'_osmode 128
+'_osmode 16
+'_osmode 256
+;
+^C^C_qsave
+^C^C_saveas
+*^C^C_text _bl
+*^C^C_text _c
+*^C^C_text _r
+'_style
+^C^C_ddedit
+;
+_u
+_u
+^C^C_redo
+^C^C_redo
+;
+'_osmode 2048
+_from
+_fence
+_cp
+_wp
+_window
+_last
+_previous
+_crossing
+_remove
+_add
+;
+^C^C_new
+^C^C_open
+*^C^C_tolerance
+^C^C_dimstyle _r
+^C^C_dimstyle _s
+^C^C_ddim
+^C^C_ddim
+;
+*^C^C_erase
+*^C^C_erase
+^C^C_ddmodify
+^C^C_ddmodify
+;
+^C^C_group
+^C^C_pspace
+^C^C_mspace
+^O
+^D
+^Q
+'_graphscr
+^E
+^G
+^B
+^V
+;
+^C^C_files
+^C^C_appload
+*^C^C_dimcenter
+*^C^C_dimedit _o
+*^C^C_dimtedit \_a
+*^C^C_dimtedit
+*^C^C_dimtedit \_h
+;
+^C^C_ddattdef
+^C^C_wblock
+^C^C_block
+^C^C_ddinsert
+;
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_scale,*^C^C_scale)
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_rotate,*^C^C_rotate)
+*^C^C_offset
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_move,*^C^C_move)
+*^C^C_bhatch
+*^C^C_hatchedit
+*^C^C_splinedit
+*^C^C_pedit
+*^C^C_explode
+*^C^C_3darray
+*^C^C_divide
+;
+^C^C_plot
+^C^C_psout
+*^C^C_leader
+*^C^C_dimbaseline
+*^C^C_dimcontinue
+*^C^C_dimlinear
+*^C^C_dimlinear
+;
+^C^C_ddatte
+^C^C_xref _o
+^C^C_xref _a
+^C^C_xref
+;
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_mirror,*^C^C_mirror)
+^C^C_break \_f \@
+^C^C_break \_f
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_copy,*^C^C_copy)
+*^C^C_extend
+$M=$(if,$(eq,$(substr,$(getvar,cmdnames),1,4),grip),_stretch,*^C^C_stretch)
+*^C^C_trim
+*^C^C_fillet _r 0;;
+*^C^C_fillet
+*^C^C_chamfer
+*^C^C_measure
+;
+^C^C_quit
+^C^C^P(if R13omn (progn(command "_Menu" R13omn)(setq R13omn nil));+
+(if (setq R13omn (getvar "menuname"));+
+(if (setq envname (getenv "ACADALTMENU")) (command "_Menu" +
+(findfile envname)) (command "_Menu" R13omn))))(setq T_MENU nil)(princ) ^P
+*^C^C_dimradius
+*^C^C_dimdiameter
+*^C^C_dimangular
+*^C^C_dimordinate
+*^C^C_dimaligned
+;
+^C^C_ddunits
+^C^C_ddltype
+^C^C_ddemodes
+^C^C_ddrmodes
+;
+*^C^C_intersect
+*^C^C_union
+*^C^C_subtract
+*^C^C_interfere
+*^C^C_section
+*^C^C_slice
+*^C^C_lengthen
+*^C^C_align
+*^C^C_rotate3d
+*^C^C_mirror3d
+^C^C^P(ai_onoff "QTEXTMODE") ^P
+;
+^C^C_shell
+^C^C_shell
+**ENDTAB4A
+
+// End of Menu

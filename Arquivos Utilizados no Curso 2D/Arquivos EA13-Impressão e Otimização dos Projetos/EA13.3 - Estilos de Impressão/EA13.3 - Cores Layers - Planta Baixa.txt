@@ -1,0 +1,10 @@
+0 - white
+cotas - white
+Formato - 116
+Janela - 92
+Objetos - 34
+Paredes - 154
+Piso - 253
+Porta - 30
+Símbolos - red
+Texto - 102

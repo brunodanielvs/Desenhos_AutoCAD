@@ -1,0 +1,8 @@
+0 - white
+Contorno - blue
+Cotas - white
+Formato - 116
+Hachura - 252
+Linha de Centro - 46
+Símbolos - red
+Texto - 102

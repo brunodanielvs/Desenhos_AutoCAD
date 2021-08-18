@@ -1,0 +1,82 @@
+GABARITO ELETRONICO BOSCH
+
+   O Gabarito Eletronico Bosch fornece os blocos dos eletro-
+domesticos dessa marca para serem usados nos seus projetos.
+Estao disponiveis em planta, elevacao frontal e elevacao
+lateral direita e esquerda.
+O Gabarito Eletronico Bosch conta com uma configuracao que
+permite o seu uso nas unidades metro, centimetro ou milimetro.
+Veja abaixo instrucoes detalhadas de como utilizar o Gabarito
+Eletronico.
+
+LISTA COM O NOME DOS PRODUTOS.
+
+   Lista principal onde aparecem os nomes dos produtos
+disponiveis para serem usados nos seus desenhos. Use a
+barra de rolagem do lado esquerdo da lista, com os nomes
+dos produtos, para ver todos os produtos disponiveis.
+O nome do produto a ser utilizado deve ser destacado
+na lista.
+
+QUADRO DE IMAGEM.
+
+   O quadro de imagem mostra o desenho do produto que foi
+selecionado na lista para ser inserido no desenho.
+
+CODIGO.
+
+   Mostra o codigo do produto selecionado na lista.
+
+POSICAO DE INSERCAO: Planta - Frontal - Lateral
+
+   A posicao de insercao do bloco pode ser escolhida nas
+opcoes de vista em Planta, Frontal ou Lateral. O quadro de
+imagem mostra o desenho do bloco na posicao selecionada.
+A posicao de insercao Lateral do bloco pode ser invertida
+somente com a selecao da opcao "Espelhado".
+
+ESPELHADO
+
+   Inverte a vista lateral do bloco (mirror).
+
+BOTAO <<INSERE:
+
+   Usado para inserir no desenho o bloco selecionado e
+destacado na lista com o nome dos produtos.
+Ao selecionar esse botao o quadro de dialogos desaparece
+temporariamente da tela, permitindo que o desenho seja
+visualizado para a indicacao do ponto de insercao do bloco.
+Quando o bloco for inserido em planta, sera tambem solicitado
+o angulo de insercao do bloco.
+
+BOTAO CONFIGURA
+
+   Atraves desse botao, pode-se determinar em que unidade os
+blocos serao inseridos no seu desenho. Voce pode escolher entre
+milimetros, centimetros ou metro.
+
+BOTAO SAIR
+
+   Fecha o quadro de dialogos do aplicativo e volta para o AutoCAD.
+
+BOTAO AJUDA
+
+   Acesso a esse texto de ajuda que mostra como utilizar o Gabarito
+   Eletronico Bosch.
+
+LAYER
+
+   O desenho dos blocos dos produtos estao divididos em 2 layer's:
+
+   Bosch_1
+
+   Contorno geral do desenho. O estado desse layer deve
+   ser sempre "on" (ligado).
+
+   Bosch_2
+
+   Detalhes de contorno dos blocos. Em escalas menores
+   como 1:100 ou 1:200, esse layer pode ser desligado
+   para que na impressao os blocos nao fiquem com um
+   desenho muito carregado.
+ 
